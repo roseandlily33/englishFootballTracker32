@@ -1,3 +1,10 @@
+:root{
+    --blue: #001282;
+    --gold: #B69A47;
+    --white: #FEFEFE;
+    --yellow: #FEDB37;
+}
+
 body {
  background-color: white;
 }
