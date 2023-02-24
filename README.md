@@ -1,5 +1,5 @@
-# VIP-Please
-Group 1 Project - VIP customer system for a restaurant 
+# Football Project
+Group 1 Project - Football website to see stats, scores, and videos about English Football Teams.
 
 ## Description:
 
