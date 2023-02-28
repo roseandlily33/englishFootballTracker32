@@ -2,8 +2,18 @@ const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d
 
 //{"country_id":"44","country_name":"England","league_id":"153","league_name":"Championship","league_season":"2022/2023"
 
+let today = new Date();
+let tomorrow = new Date();
+let tomorrowDate = tomorrow.setDate(tomorrow.getDate()+1);
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd
+tomorrowDate = yyyy + '-' + mm + '-' + dd
+
 function matches(team) {
-    fetch('https://apiv3.apifootball.com/?action=get_teams&league_id=153&APIkey=' + footballAPIkey)
+    fetch(`https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrowDate}&league_id=153&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
