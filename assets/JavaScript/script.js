@@ -23,7 +23,7 @@ function matches(team) {
     })
     
     .catch(function()  {
-    })
+    }) 
 }
 
 //match_date, match_time, match_hometeam_id/match_awayteam_id, match_hometeam_name/match_awayteam_name, match_stadium, team_home/away_badge, match_referee, league_year

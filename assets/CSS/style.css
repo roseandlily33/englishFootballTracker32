@@ -21,7 +21,7 @@ header {
     background-color: var(--gold);
 }
 h1 {
-    text-align: center;
+    text-align: center; 
     color: var(--blue);
     font-family: var(--headings);
     font-size: 3em;
