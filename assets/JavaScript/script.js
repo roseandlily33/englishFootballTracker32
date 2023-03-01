@@ -14,6 +14,8 @@ tomorrowDate = yyyy + '-' + mm + '-' + dd
 
 function matches(team) {
     fetch(`https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrowDate}&league_id=153&APIkey=` + footballAPIkey)
+function matches(team) {
+    fetch('https://apiv3.apifootball.com/?action=get_teams&league_id=153&APIkey=' + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
@@ -30,3 +32,4 @@ matches();
 
 //match_date, match_time, match_hometeam_id/match_awayteam_id, match_hometeam_name/match_awayteam_name, match_stadium, team_home/away_badge, match_referee, league_year
 //possibilities - lineup
+matches();
