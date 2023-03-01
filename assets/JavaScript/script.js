@@ -37,6 +37,7 @@ function upcomingMatches(team) {
             homeBadge: item.team_home_badge,
             awayBadge: item.away_home_badge,
             matchRef: item.match_referee,
+            leagueName: item.league_name
             //homeLineUp: item.lineup.home,
             //awayLineUp: item.lineup.away
         };
@@ -55,7 +56,81 @@ upcomingMatches();
 
 //Display items 
 function displayUpcomingMatches(data) {
+    const upcomingGamesContainer = document.querySelector('#upcomingCont');
+    function southernSouth() {
+    for (let i = 0; i < data.length; i++) {
+        const matchDate = document.createElement('h2');
+        const homeTeam = document.createElement('h3');
+        const awayTeam = document.createElement('h3');
+        const leagueDivison = document.createElement('h4');
+        matchDate.textContent = data[i].matchDate;
+        leagueDivison.textContent = data[i].leagueName;
+        homeTeam.textContent = data[i].hometeamName;
+        awayTeam.textContent = data[i].awayteamName;
+        console.log(data[i].matchDate);
+        upcomingGamesContainer.appendChild(matchDate);
+        upcomingGamesContainer.appendChild(leagueDivison);
+        upcomingGamesContainer.appendChild(homeTeam);
+        upcomingGamesContainer.appendChild(awayTeam);
+    }
+    }
 
+    function southernCentral() {
+        for (let i = 0; i < data.length; i++) {
+            const matchDate = document.createElement('h2');
+            const homeTeam = document.createElement('h3');
+            const awayTeam = document.createElement('h3');
+            const leagueDivison = document.createElement('h4');
+            matchDate.textContent = data[i].matchDate;
+            leagueDivison.textContent = data[i].leagueName;
+            homeTeam.textContent = data[i].hometeamName;
+            awayTeam.textContent = data[i].awayteamName;
+            console.log(data[i].matchDate);
+            upcomingGamesContainer.appendChild(matchDate);
+            upcomingGamesContainer.appendChild(leagueDivison);
+            upcomingGamesContainer.appendChild(homeTeam);
+            upcomingGamesContainer.appendChild(awayTeam);
+        }
+    }
+    
+    function Northern() {
+        for (let i = 0; i < data.length; i++) {
+            const matchDate = document.createElement('h2');
+            const homeTeam = document.createElement('h3');
+            const awayTeam = document.createElement('h3');
+            const leagueDivison = document.createElement('h4');
+            matchDate.textContent = data[i].matchDate;
+            leagueDivison.textContent = data[i].leagueName;
+            homeTeam.textContent = data[i].hometeamName;
+            awayTeam.textContent = data[i].awayteamName;
+            console.log(data[i].matchDate);
+            upcomingGamesContainer.appendChild(matchDate);
+            upcomingGamesContainer.appendChild(leagueDivison);
+            upcomingGamesContainer.appendChild(homeTeam);
+            upcomingGamesContainer.appendChild(awayTeam);
+        }
+    }
+
+    function isthmian() {
+        for (let i = 0; i < data.length; i++) {
+            const matchDate = document.createElement('h2');
+            const homeTeam = document.createElement('h3');
+            const awayTeam = document.createElement('h3');
+            const leagueDivison = document.createElement('h4');
+            matchDate.textContent = data[i].matchDate;
+            leagueDivison.textContent = data[i].leagueName;
+            homeTeam.textContent = data[i].hometeamName;
+            awayTeam.textContent = data[i].awayteamName;
+            console.log(data[i].matchDate);
+            upcomingGamesContainer.appendChild(matchDate);
+            upcomingGamesContainer.appendChild(leagueDivison);
+            upcomingGamesContainer.appendChild(homeTeam);
+            upcomingGamesContainer.appendChild(awayTeam);
+        }
+    }
+return upcomingGamesContainer;
 }
+
+displayUpcomingMatches();
 
 })//&from=${today}&to=2023-03-09&league_id=153
