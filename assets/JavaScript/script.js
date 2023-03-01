@@ -19,7 +19,24 @@ function matches(team) {
 
 })
     .then(function(data) {
-        console.log('--->'+(JSON.stringify(data)));
+        const matchData = data.map(item => {
+            return {
+            matchDate: item.match_date,
+            time: item.match_time,
+            hometeamID: item.match_hometeam_id,
+            awayteamID: item.match_awaytem_id,
+            hometeamName: item.match_hometeam_name,
+            awayteamName: item.match_awayteam_name,
+            stadium: item.match_stadium,
+            homeBadge: item.team_home_badge,
+            awayBadge: item.away_home_badge,
+            matchRef: item.match_referee,
+            leagueYear: item.leagueYear,
+            //homeLineUp: item.lineup.home,
+            //awayLineUp: item.lineup.away
+        };
+    });
+        console.log('--->'+(JSON.stringify(matchData)));
     })
     
     .catch(function()  {
