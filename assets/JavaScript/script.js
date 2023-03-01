@@ -19,7 +19,7 @@ yyyy = tomorrow.getFullYear();
 tomorrow = yyyy + '-' + mm + '-' + dd
 
 function upcomingMatches(team) {
-    fetch( `https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
+    fetch( `https://apiv3.apifootball.com/?action=get_events&from=2023-02-20&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
@@ -37,9 +37,9 @@ function upcomingMatches(team) {
             homeBadge: item.team_home_badge,
             awayBadge: item.away_home_badge,
             matchRef: item.match_referee,
-            leagueName: item.league_name
-            //homeLineUp: item.lineup.home,
-            //awayLineUp: item.lineup.away
+            leagueName: item.league_name,
+            homeLineUp: item.lineup.home,
+            awayLineUp: item.lineup.away
         };
     });
         console.log('--->'+(JSON.stringify(matchData)));
@@ -56,78 +56,154 @@ upcomingMatches();
 
 //Display items 
 function displayUpcomingMatches(data) {
+    let counter = 0
     const upcomingGamesContainer = document.querySelector('#upcomingCont');
     function southernSouth() {
     for (let i = 0; i < data.length; i++) {
+        
+        if (data[i].leagueName === "Non League Premier - Southern South") {
+            if (counter < 3) {
         const matchDate = document.createElement('h2');
         const homeTeam = document.createElement('h3');
         const awayTeam = document.createElement('h3');
         const leagueDivison = document.createElement('h4');
+        const matchStadium = document.createElement('h5');
+        const moreButton = document.createElement('button');
+
         matchDate.textContent = data[i].matchDate;
         leagueDivison.textContent = data[i].leagueName;
-        homeTeam.textContent = data[i].hometeamName;
+        homeTeam.textContent = data[i].hometeamName + ' VS.';
         awayTeam.textContent = data[i].awayteamName;
+        matchStadium.textContent = data[i].stadium;
+        moreButton.textContent = 'Match Data';
+        moreButton.addEventListener('click', () => {
+            console.log(data[i].homeLineUp)
+          });
         console.log(data[i].matchDate);
+        console.log(data[i].stadium);
         upcomingGamesContainer.appendChild(matchDate);
         upcomingGamesContainer.appendChild(leagueDivison);
         upcomingGamesContainer.appendChild(homeTeam);
         upcomingGamesContainer.appendChild(awayTeam);
+        upcomingGamesContainer.appendChild(matchStadium);
+        upcomingGamesContainer.appendChild(moreButton);
+        counter++;
+        } else {
+            break;
+        }
+    }
     }
     }
 
     function southernCentral() {
+        let counter = 0;
         for (let i = 0; i < data.length; i++) {
+            if (data[i].leagueName === "Non League Premier - Southern Central") {
+                if (counter < 3) {
             const matchDate = document.createElement('h2');
             const homeTeam = document.createElement('h3');
             const awayTeam = document.createElement('h3');
             const leagueDivison = document.createElement('h4');
+            const matchStadium = document.createElement('h5');
+            const moreButton = document.createElement('button');
             matchDate.textContent = data[i].matchDate;
             leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName;
+            homeTeam.textContent = data[i].hometeamName + ' VS.';
             awayTeam.textContent = data[i].awayteamName;
+            matchStadium.textContent = data[i].stadium;
+            moreButton.textContent = 'Match Data';
+            moreButton.addEventListener('click', () => {
+                console.log(data[i].homeLineUp)
+              });
             console.log(data[i].matchDate);
             upcomingGamesContainer.appendChild(matchDate);
             upcomingGamesContainer.appendChild(leagueDivison);
             upcomingGamesContainer.appendChild(homeTeam);
             upcomingGamesContainer.appendChild(awayTeam);
-        }
+            upcomingGamesContainer.appendChild(matchStadium);
+            upcomingGamesContainer.appendChild(moreButton);
+            counter++;
+            }else {
+                break;
+            }}}
     }
     
-    function Northern() {
+    function northern() {
+        let counter = 0
         for (let i = 0; i < data.length; i++) {
+            if (data[i].leagueName === "Non League Premier - Northern") {
+                if (counter < 3) {
             const matchDate = document.createElement('h2');
             const homeTeam = document.createElement('h3');
             const awayTeam = document.createElement('h3');
             const leagueDivison = document.createElement('h4');
+            const matchStadium = document.createElement('h5');
+            const moreButton = document.createElement('button');
             matchDate.textContent = data[i].matchDate;
             leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName;
+            homeTeam.textContent = data[i].hometeamName + ' VS.';
             awayTeam.textContent = data[i].awayteamName;
+            matchStadium.textContent = data[i].stadium;
+            moreButton.textContent = 'Match Data';
+            moreButton.addEventListener('click', () => {
+                console.log(data[i].homeLineUp);
+                console.log(data[i].matchRef);
+              });
             console.log(data[i].matchDate);
             upcomingGamesContainer.appendChild(matchDate);
             upcomingGamesContainer.appendChild(leagueDivison);
             upcomingGamesContainer.appendChild(homeTeam);
             upcomingGamesContainer.appendChild(awayTeam);
+            upcomingGamesContainer.appendChild(matchStadium);
+            upcomingGamesContainer.appendChild(moreButton);
+            counter++;
+            } else {
+                break;
+            }
         }
+      } 
+        
     }
 
     function isthmian() {
+        let counter = 0
         for (let i = 0; i < data.length; i++) {
+
+            if (data[i].leagueName === "Non League Premier - Isthmian") {
             const matchDate = document.createElement('h2');
+            if (counter < 3) {
             const homeTeam = document.createElement('h3');
             const awayTeam = document.createElement('h3');
             const leagueDivison = document.createElement('h4');
+            const matchStadium = document.createElement('h5');
+            const moreButton = document.createElement('button');
             matchDate.textContent = data[i].matchDate;
             leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName;
+            homeTeam.textContent = data[i].hometeamName + ' VS.';
             awayTeam.textContent = data[i].awayteamName;
+            matchStadium.textContent = data[i].stadium;
+            moreButton.textContent = 'Match Data';
+            moreButton.addEventListener('click', () => {
+                console.log(data[i].homeLineUp)
+              });
             console.log(data[i].matchDate);
             upcomingGamesContainer.appendChild(matchDate);
             upcomingGamesContainer.appendChild(leagueDivison);
             upcomingGamesContainer.appendChild(homeTeam);
             upcomingGamesContainer.appendChild(awayTeam);
-        }
+            upcomingGamesContainer.appendChild(matchStadium);
+            upcomingGamesContainer.appendChild(moreButton);
+            counter++;
+            } else {
+                break;
+            }
+        }}
     }
+    southernSouth();
+    southernCentral();
+    northern();
+    isthmian();
+
 return upcomingGamesContainer;
 }
 
