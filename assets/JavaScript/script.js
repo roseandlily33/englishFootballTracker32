@@ -58,18 +58,24 @@ upcomingMatches();
 function displayUpcomingMatches(data) {
     let counter = 0
     const upcomingGamesContainer = document.querySelector('#upcomingCont');
+    const southernLeagueContainer = document.querySelector('#southern-south-upcoming');
+    const southernCentralLeagueContainer = document.querySelector('#southern-central-upcoming');
+    const northernLeagueContainer = document.querySelector('#northern-upcoming');
+    const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming')
     function southernSouth() {
     for (let i = 0; i < data.length; i++) {
         
         if (data[i].leagueName === "Non League Premier - Southern South") {
             if (counter < 3) {
+        
         const matchDate = document.createElement('h2');
         const homeTeam = document.createElement('h3');
         const awayTeam = document.createElement('h3');
         const leagueDivison = document.createElement('h4');
         const matchStadium = document.createElement('h5');
         const moreButton = document.createElement('button');
-
+        
+        
         matchDate.textContent = data[i].matchDate;
         leagueDivison.textContent = data[i].leagueName;
         homeTeam.textContent = data[i].hometeamName + ' VS.';
@@ -81,12 +87,13 @@ function displayUpcomingMatches(data) {
           });
         console.log(data[i].matchDate);
         console.log(data[i].stadium);
-        upcomingGamesContainer.appendChild(matchDate);
-        upcomingGamesContainer.appendChild(leagueDivison);
-        upcomingGamesContainer.appendChild(homeTeam);
-        upcomingGamesContainer.appendChild(awayTeam);
-        upcomingGamesContainer.appendChild(matchStadium);
-        upcomingGamesContainer.appendChild(moreButton);
+        
+        southernLeagueContainer.appendChild(matchDate);
+        southernLeagueContainer.appendChild(leagueDivison);
+        southernLeagueContainer.appendChild(homeTeam);
+        southernLeagueContainer.appendChild(awayTeam);
+        southernLeagueContainer.appendChild(matchStadium);
+        southernLeagueContainer.appendChild(moreButton);
         counter++;
         } else {
             break;
@@ -116,12 +123,12 @@ function displayUpcomingMatches(data) {
                 console.log(data[i].homeLineUp)
               });
             console.log(data[i].matchDate);
-            upcomingGamesContainer.appendChild(matchDate);
-            upcomingGamesContainer.appendChild(leagueDivison);
-            upcomingGamesContainer.appendChild(homeTeam);
-            upcomingGamesContainer.appendChild(awayTeam);
-            upcomingGamesContainer.appendChild(matchStadium);
-            upcomingGamesContainer.appendChild(moreButton);
+            southernCentralLeagueContainer.appendChild(matchDate);
+            southernCentralLeagueContainer.appendChild(leagueDivison);
+            southernCentralLeagueContainer.appendChild(homeTeam);
+            southernCentralLeagueContainer.appendChild(awayTeam);
+            southernCentralLeagueContainer.appendChild(matchStadium);
+            southernCentralLeagueContainer.appendChild(moreButton);
             counter++;
             }else {
                 break;
@@ -150,13 +157,12 @@ function displayUpcomingMatches(data) {
                 console.log(data[i].matchRef);
               });
             console.log(data[i].matchDate);
-            upcomingGamesContainer.appendChild(matchDate);
-            upcomingGamesContainer.appendChild(leagueDivison);
-            upcomingGamesContainer.appendChild(homeTeam);
-            upcomingGamesContainer.appendChild(awayTeam);
-            upcomingGamesContainer.appendChild(matchStadium);
-            upcomingGamesContainer.appendChild(moreButton);
-            counter++;
+            northernLeagueContainer.appendChild(matchDate);
+            northernLeagueContainer.appendChild(leagueDivison);
+            northernLeagueContainer.appendChild(homeTeam);
+            northernLeagueContainer.appendChild(awayTeam);
+            northernLeagueContainer.appendChild(matchStadium);
+            northernLeagueContainer.appendChild(moreButton);
             } else {
                 break;
             }
@@ -187,12 +193,12 @@ function displayUpcomingMatches(data) {
                 console.log(data[i].homeLineUp)
               });
             console.log(data[i].matchDate);
-            upcomingGamesContainer.appendChild(matchDate);
-            upcomingGamesContainer.appendChild(leagueDivison);
-            upcomingGamesContainer.appendChild(homeTeam);
-            upcomingGamesContainer.appendChild(awayTeam);
-            upcomingGamesContainer.appendChild(matchStadium);
-            upcomingGamesContainer.appendChild(moreButton);
+            isthmianLeagueContainer.appendChild(matchDate);
+            isthmianLeagueContainer.appendChild(leagueDivison);
+            isthmianLeagueContainer.appendChild(homeTeam);
+            isthmianLeagueContainer.appendChild(awayTeam);
+            isthmianLeagueContainer.appendChild(matchStadium);
+            isthmianLeagueContainer.appendChild(moreButton);
             counter++;
             } else {
                 break;
