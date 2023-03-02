@@ -3,6 +3,9 @@ const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d
 
 //{"country_id":"44","country_name":"England","league_id":"153","league_name":"Championship","league_season":"2022/2023"
 
+//Formats the API call to only call the current day and to a specified date
+//Set tommorrow to 5 days so that there is always games displaying
+//A future update could allow the user to choose the specified number fo games they went to see and when
 let today = new Date();
 let tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate()+5);
@@ -54,9 +57,8 @@ function upcomingMatches(team) {
 //possibilities - lineup
 upcomingMatches();
 
-//Display items 
+//Displays Upcoming games
 function displayUpcomingMatches(data) {
-    let counter = 0
     const upcomingGamesContainer = document.querySelector('#upcomingCont');
     const allUpcomingGamesContainer = document.querySelector('#display-all-division');
     const southernLeagueContainer = document.querySelector('#southern-south-upcoming');
@@ -64,6 +66,7 @@ function displayUpcomingMatches(data) {
     const northernLeagueContainer = document.querySelector('#northern-upcoming');
     const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming')
 
+    // displays upcoming games for the next 5 days
     function displayAll () {
         for (let i = 0; i < data.length; i++) {
 
@@ -96,6 +99,7 @@ function displayUpcomingMatches(data) {
             
             matchDate.textContent = data[i].matchDate;
             matchTime.textContent = data[i].time;
+            //Removes the non premier league portion of the league name
                 if (data[i].leagueName === "Non League Premier - Northern") {
                     divisionName.textContent = 'Northern'
                 } else if (data[i].leagueName === "Non League Premier - Southern South") {
@@ -107,6 +111,7 @@ function displayUpcomingMatches(data) {
                 }
             
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            //Match Data will appear in a modal when clicked
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
                 console.log(data[i].stadium)
@@ -123,6 +128,7 @@ function displayUpcomingMatches(data) {
         }
     }
 
+    //displays southern south leagye
     function southernSouth() {
     for (let i = 0; i < data.length; i++) {
                 
@@ -170,6 +176,7 @@ function displayUpcomingMatches(data) {
     }
     }
 
+    //displays southern central league
     function southernCentral() {
 
 
@@ -217,6 +224,7 @@ function displayUpcomingMatches(data) {
             }
     }
     
+    //displays northern league
     function northern() {
         
         for (let i = 0; i < data.length; i++) {
@@ -265,9 +273,9 @@ function displayUpcomingMatches(data) {
         
     }
 
+    //displays isthmian league
     function isthmian() {
         
-
         for (let i = 0; i < data.length; i++) {
 
             const matchDiv = document.createElement('div');
@@ -312,6 +320,9 @@ function displayUpcomingMatches(data) {
             
         }
     }
+
+    //This section Configures the buttons to show desired league
+    //Default is all leagues
     const displaySouthSouth = document.querySelector('#display-south-south');
     const displaySouthCentral = document.querySelector('#display-south-central');
     const displayNorth = document.querySelector('#display-north');
