@@ -3,6 +3,7 @@
     --gold: #B69A47;
     --white: #FEFEFE;
     --yellow: #FEDB37;
+    --hoverColor: #F28928;
     --headings: 'Bebas Neue', cursive;
     --main: 'DM Sans', sans-serif;
 }
@@ -26,7 +27,79 @@ h1 {
     font-family: var(--headings);
     font-size: 3em;
 }
+/* Modal */
+#modal{
+    position: fixed;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 7em;
+    overflow: auto;
+}
+#modalCont{
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    background-color: var(--yellow);
+    border: 3px solid var(--gold);
+    border-radius: 25px;
+}
+#pickMe{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
 
+}
+label{
+   font-family: var(--main);
+   padding-inline: 0.5em;
+   padding-block: 1em;
+   font-size: 1.5rem;
+   font-weight: 700;
+   text-align: center;
+}
+input{
+    display: flex;
+    align-self: center;
+    border: none;
+    border-radius: 25px;
+    width: 60%;
+    text-align: center;
+    padding: 0.8em;
+}
+#buttonCont{
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+}
+#cancel, #submit{
+    border: none;
+    border-radius: 25px;
+    padding: 1em 2em;
+    margin-inline: 2em;
+}
+#cancel{
+    background-color: var(--blue);
+    color: var(--white);
+}
+#submit{
+    background-color: var(--gold);
+    color: var(--white);
+}
+#cancel:hover{
+    background-color: var(--hoverColor);
+
+}
+#submit:hover{
+    background-color: var(--hoverColor);
+}
+/* Hides the main content until button is clicked */
+.hide {
+    display: none;
+}
 /*Search Container with displayed favourites */
 #searchCont {
     margin-block: 1em;
@@ -51,6 +124,11 @@ h1 {
     background-color: var(--white);
     color: var(--blue);
     cursor: pointer;
+}
+.searchedFor{
+    font-size: 16px;
+    color: var(--white);
+    padding: 0.4em;
 }
 
 /*Stats Container */

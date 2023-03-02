@@ -20,20 +20,47 @@
     <header class="pure-u-1-1">
         <h1>Football Tracker</h1>
     </header>
+    <!--Pop up modal-->
+    <div id="modal" class="pure-g"> 
+        <div id="modalCont" class="pure-u-1">
+            <div id="pickMe">
+                <label for="teams">Choose a team</label>
+           <input id="modalSearch" list="teams" name="teams">
+           <datalist id="teams">
+            <option value="Aveley">
+            </option>
+            <option value="Lancaster City">
+            </option>
+            <option value="Stourbridge">
+            </option>
+            <option value="Salisbury"></option>
+            <option value="Kingstonian"></option>
+           </datalist>
+           
+            </select>
+        </div>
+<!--Bottom buttons-->
+            <div id="buttonCont">
+            <button id="cancel">Cancel</button>
+            <button id="submit">Submit</button>
+        </div>
+        </div>
+    </div>
+<div id="mainContent" class="">
     <!--Search Bar-->
     <div class="pure-g">
         <div class="pure-u-1 pure-u-md-1-3">
         <div id="searchCont">
              <form class="pure-form">
-            <input type="text" class="pure-input-rounded" />
-            <button type="submit" class="pure-button">Search</button>
+            <input id="formSearch" type="text" class="pure-input-rounded" />
+            <button 
+            id="innerSubmit"
+            type="submit" class="pure-button"
+            >Search</button>
         </form>
         <div id="faveTeams">
-            <!--Styling purposes-->
             <ul>
-                <li>1. Example A</li>
-                <li>2. Example B</li>
-                <li>3. Example C</li>
+                
             </ul>
 
         </div>
@@ -86,7 +113,7 @@
 
         </div>
     </div> -->
-
+</div>
     <script src="./assets/JavaScript/script.js"></script>
 </body>
 </html>
