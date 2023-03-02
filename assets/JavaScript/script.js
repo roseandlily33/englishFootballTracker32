@@ -35,7 +35,7 @@ function upcomingMatches(team) {
             awayteamName: item.match_awayteam_name,
             stadium: item.match_stadium,
             homeBadge: item.team_home_badge,
-            awayBadge: item.away_home_badge,
+            awayBadge: item.team_away_badge,
             matchRef: item.match_referee,
             leagueName: item.league_name,
             homeLineUp: item.lineup.home,
@@ -62,38 +62,93 @@ function displayUpcomingMatches(data) {
     const southernCentralLeagueContainer = document.querySelector('#southern-central-upcoming');
     const northernLeagueContainer = document.querySelector('#northern-upcoming');
     const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming')
+
+    function displayAll () {
+        for (let i = 0; i < data.length; i++) {
+
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+    
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('match-date');
+    
+            const matchUp = document.createElement('h3');
+            matchUp.classList.add('match-up');
+    
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+    
+            const moreButton = document.createElement('button');
+            moreButton.classList.add('pure-button');
+            
+            
+            matchDate.textContent = data[i].matchDate;
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            moreButton.textContent = 'Match Data';
+            moreButton.addEventListener('click', () => {
+                console.log(data[i].stadium)
+              });
+            console.log(data[i].matchDate);
+    
+            southernLeagueContainer.appendChild(matchDiv);
+            southernCentralContainer.appendChild(matchDiv);
+            northernLeagueContainer.appendChild(matchDiv);
+            isthmianLeagueContainer.appendChild(matchDiv);
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(moreButton);
+
+        }
+    }
+
     function southernSouth() {
     for (let i = 0; i < data.length; i++) {
         
         if (data[i].leagueName === "Non League Premier - Southern South") {
             if (counter < 3) {
-        
+                
+        const matchDiv = document.createElement('div');
+        matchDiv.classList.add('match');
+
         const matchDate = document.createElement('h2');
-        const homeTeam = document.createElement('h3');
-        const awayTeam = document.createElement('h3');
-        const leagueDivison = document.createElement('h4');
-        const matchStadium = document.createElement('h5');
+        matchDate.classList.add('match-date');
+
+        const matchUp = document.createElement('h3');
+        matchUp.classList.add('match-up');
+
+        const homeTeamBadge = document.createElement('img');
+        homeTeamBadge.classList.add('match-up');
+        homeTeamBadge.src = data[i].homeBadge;
+
+        const awayTeamBadge = document.createElement('img');
+        awayTeamBadge.classList.add('match-up');
+        awayTeamBadge.src = data[i].awayBadge;
+
         const moreButton = document.createElement('button');
+        moreButton.classList.add('pure-button');
         
         
         matchDate.textContent = data[i].matchDate;
-        leagueDivison.textContent = data[i].leagueName;
-        homeTeam.textContent = data[i].hometeamName + ' VS.';
-        awayTeam.textContent = data[i].awayteamName;
-        matchStadium.textContent = data[i].stadium;
+        matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
         moreButton.textContent = 'Match Data';
         moreButton.addEventListener('click', () => {
-            console.log(data[i].homeLineUp)
+            console.log(data[i].stadium)
           });
         console.log(data[i].matchDate);
-        console.log(data[i].stadium);
-        
-        southernLeagueContainer.appendChild(matchDate);
-        southernLeagueContainer.appendChild(leagueDivison);
-        southernLeagueContainer.appendChild(homeTeam);
-        southernLeagueContainer.appendChild(awayTeam);
-        southernLeagueContainer.appendChild(matchStadium);
-        southernLeagueContainer.appendChild(moreButton);
+
+        southernLeagueContainer.appendChild(matchDiv);
+        matchDiv.appendChild(matchDate);
+        matchDiv.appendChild(homeTeamBadge);
+        matchDiv.appendChild(awayTeamBadge);
+        matchDiv.appendChild(matchUp);
+        matchDiv.appendChild(moreButton);
         counter++;
         } else {
             break;
@@ -107,28 +162,40 @@ function displayUpcomingMatches(data) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Southern Central") {
                 if (counter < 3) {
-            const matchDate = document.createElement('h2');
-            const homeTeam = document.createElement('h3');
-            const awayTeam = document.createElement('h3');
-            const leagueDivison = document.createElement('h4');
-            const matchStadium = document.createElement('h5');
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+
+             const matchDate = document.createElement('h2');
+            matchDate.classList.add('match-date');
+
+            const matchUp = document.createElement('h3');
+            matchUp.classList.add('match-up');
+
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+
             const moreButton = document.createElement('button');
+            moreButton.classList.add('pure-button');
+
             matchDate.textContent = data[i].matchDate;
-            leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName + ' VS.';
-            awayTeam.textContent = data[i].awayteamName;
-            matchStadium.textContent = data[i].stadium;
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].homeLineUp)
+                console.log(data[i].stadium)
               });
             console.log(data[i].matchDate);
-            southernCentralLeagueContainer.appendChild(matchDate);
-            southernCentralLeagueContainer.appendChild(leagueDivison);
-            southernCentralLeagueContainer.appendChild(homeTeam);
-            southernCentralLeagueContainer.appendChild(awayTeam);
-            southernCentralLeagueContainer.appendChild(matchStadium);
-            southernCentralLeagueContainer.appendChild(moreButton);
+
+            southernCentralLeagueContainer.appendChild(matchDiv);
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(moreButton);
             counter++;
             }else {
                 break;
@@ -140,29 +207,40 @@ function displayUpcomingMatches(data) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Northern") {
                 if (counter < 3) {
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+
             const matchDate = document.createElement('h2');
-            const homeTeam = document.createElement('h3');
-            const awayTeam = document.createElement('h3');
-            const leagueDivison = document.createElement('h4');
-            const matchStadium = document.createElement('h5');
+            matchDate.classList.add('match-date');
+    
+            const matchUp = document.createElement('h3');
+            matchUp.classList.add('match-up');
+
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+    
             const moreButton = document.createElement('button');
+            moreButton.classList.add('pure-button');
+
             matchDate.textContent = data[i].matchDate;
-            leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName + ' VS.';
-            awayTeam.textContent = data[i].awayteamName;
-            matchStadium.textContent = data[i].stadium;
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].homeLineUp);
+                console.log(data[i].stadium);
                 console.log(data[i].matchRef);
               });
             console.log(data[i].matchDate);
-            northernLeagueContainer.appendChild(matchDate);
-            northernLeagueContainer.appendChild(leagueDivison);
-            northernLeagueContainer.appendChild(homeTeam);
-            northernLeagueContainer.appendChild(awayTeam);
-            northernLeagueContainer.appendChild(matchStadium);
-            northernLeagueContainer.appendChild(moreButton);
+            northernLeagueContainer.appendChild(matchDiv);
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(moreButton);
             counter++
             } else {
                 break;
@@ -177,39 +255,86 @@ function displayUpcomingMatches(data) {
         for (let i = 0; i < data.length; i++) {
 
             if (data[i].leagueName === "Non League Premier - Isthmian") {
-            const matchDate = document.createElement('h2');
             if (counter < 3) {
-            const homeTeam = document.createElement('h3');
-            const awayTeam = document.createElement('h3');
-            const leagueDivison = document.createElement('h4');
-            const matchStadium = document.createElement('h5');
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('match-date');
+
+            const matchUp = document.createElement('h3');
+            matchUp.classList.add('match-up');
+
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+
+
             const moreButton = document.createElement('button');
+            moreButton.classList.add('pure-button');
+
             matchDate.textContent = data[i].matchDate;
-            leagueDivison.textContent = data[i].leagueName;
-            homeTeam.textContent = data[i].hometeamName + ' VS.';
-            awayTeam.textContent = data[i].awayteamName;
-            matchStadium.textContent = data[i].stadium;
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].homeLineUp)
+                console.log(data[i].stadium)
               });
             console.log(data[i].matchDate);
-            isthmianLeagueContainer.appendChild(matchDate);
-            isthmianLeagueContainer.appendChild(leagueDivison);
-            isthmianLeagueContainer.appendChild(homeTeam);
-            isthmianLeagueContainer.appendChild(awayTeam);
-            isthmianLeagueContainer.appendChild(matchStadium);
-            isthmianLeagueContainer.appendChild(moreButton);
+            isthmianLeagueContainer.appendChild(matchDiv)
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(moreButton);
             counter++;
             } else {
                 break;
             }
         }}
     }
-    southernSouth();
-    southernCentral();
-    northern();
-    isthmian();
+    const displaySouthSouth = document.querySelector('#display-south-south');
+    const displaySouthCentral = document.querySelector('#display-south-central');
+    const displayNorth = document.querySelector('#display-north');
+    const displayIsthmian = document.querySelector('#display-isthmian');
+
+    displayAll();
+
+    displaySouthSouth.addEventListener('click', function(){
+        southernSouth(); 
+        southernLeagueContainer.style.display='block';
+        southernCentralLeagueContainer.style.display='none';
+        northernLeagueContainer.style.display='none';
+        isthmianLeagueContainer.style.display='none';
+       })
+    
+    displaySouthCentral.addEventListener('click', function(){
+        southernCentral();
+        southernLeagueContainer.style.display='none';
+        southernCentralLeagueContainer.style.display='block';
+        northernLeagueContainer.style.display='none';
+        isthmianLeagueContainer.style.display='none';
+    })
+    
+    displayNorth.addEventListener('click', function(){
+        northern();
+        southernLeagueContainer.style.display='none';
+        southernCentralLeagueContainer.style.display='none';
+        northernLeagueContainer.style.display='block';
+        isthmianLeagueContainer.style.display='none';
+    })
+
+    displayIsthmian.addEventListener('click', function(){
+         isthmian();
+         southernLeagueContainer.style.display='none';
+        southernCentralLeagueContainer.style.display='none';
+        northernLeagueContainer.style.display='none';
+        isthmianLeagueContainer.style.display='block';
+    })
+   
 
 return upcomingGamesContainer;
 }
