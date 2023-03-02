@@ -5,7 +5,7 @@ const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d
 
 let today = new Date();
 let tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate()+3);
+tomorrow.setDate(tomorrow.getDate()+5);
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
@@ -19,7 +19,7 @@ yyyy = tomorrow.getFullYear();
 tomorrow = yyyy + '-' + mm + '-' + dd
 
 function upcomingMatches(team) {
-    fetch( `https://apiv3.apifootball.com/?action=get_events&from=2023-02-20&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
+    fetch( `https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
@@ -76,10 +76,10 @@ function displayUpcomingMatches(data) {
             const matchTime = document.createElement('h2');
             matchTime.classList.add('match-time');
 
-            const divisionName = document.createElement('h3');
-            divisionName.classList.add('division-name');
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('division-name-upcoming');
     
-            const matchUp = document.createElement('h3');
+            const matchUp = document.createElement('h2');
             matchUp.classList.add('match-up');
     
             const homeTeamBadge = document.createElement('img');
@@ -125,9 +125,6 @@ function displayUpcomingMatches(data) {
 
     function southernSouth() {
     for (let i = 0; i < data.length; i++) {
-        
-        if (data[i].leagueName === "Non League Premier - Southern South") {
-            if (counter < 3) {
                 
         const matchDiv = document.createElement('div');
         matchDiv.classList.add('match');
@@ -135,7 +132,10 @@ function displayUpcomingMatches(data) {
         const matchDate = document.createElement('h2');
         matchDate.classList.add('match-date');
 
-        const matchUp = document.createElement('h3');
+        const matchTime = document.createElement('h2');
+        matchTime.classList.add('match-time');
+
+        const matchUp = document.createElement('h2');
         matchUp.classList.add('match-up');
 
         const homeTeamBadge = document.createElement('img');
@@ -151,6 +151,7 @@ function displayUpcomingMatches(data) {
         
         
         matchDate.textContent = data[i].matchDate;
+        matchTime.textContent = data[i].time;
         matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
         moreButton.textContent = 'Match Data';
         moreButton.addEventListener('click', () => {
@@ -159,31 +160,31 @@ function displayUpcomingMatches(data) {
         console.log(data[i].matchDate);
 
         southernLeagueContainer.appendChild(matchDiv);
-        matchDiv.appendChild(matchDate);
+        matchDiv.appendChild(matchUp);
         matchDiv.appendChild(homeTeamBadge);
         matchDiv.appendChild(awayTeamBadge);
-        matchDiv.appendChild(matchUp);
+        matchDiv.appendChild(matchTime);
+        matchDiv.appendChild(matchDate);
         matchDiv.appendChild(moreButton);
-        counter++;
-        } else {
-            break;
-        }
-    }
+    
     }
     }
 
     function southernCentral() {
-        let counter = 0;
+
+
         for (let i = 0; i < data.length; i++) {
-            if (data[i].leagueName === "Non League Premier - Southern Central") {
-                if (counter < 3) {
+
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('match');
 
              const matchDate = document.createElement('h2');
             matchDate.classList.add('match-date');
 
-            const matchUp = document.createElement('h3');
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('match-time');
+
+            const matchUp = document.createElement('h2');
             matchUp.classList.add('match-up');
 
             const homeTeamBadge = document.createElement('img');
@@ -198,6 +199,7 @@ function displayUpcomingMatches(data) {
             moreButton.classList.add('pure-button');
 
             matchDate.textContent = data[i].matchDate;
+            matchTime.textContent = data[i].time;
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
@@ -206,29 +208,29 @@ function displayUpcomingMatches(data) {
             console.log(data[i].matchDate);
 
             southernCentralLeagueContainer.appendChild(matchDiv);
-            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchUp);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
-            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
             matchDiv.appendChild(moreButton);
-            counter++;
-            }else {
-                break;
-            }}}
+            }
     }
     
     function northern() {
-        let counter = 0
+        
         for (let i = 0; i < data.length; i++) {
-            if (data[i].leagueName === "Non League Premier - Northern") {
-                if (counter < 3) {
+            
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('match');
 
             const matchDate = document.createElement('h2');
             matchDate.classList.add('match-date');
+
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('match-time');
     
-            const matchUp = document.createElement('h3');
+            const matchUp = document.createElement('h2');
             matchUp.classList.add('match-up');
 
             const homeTeamBadge = document.createElement('img');
@@ -243,6 +245,7 @@ function displayUpcomingMatches(data) {
             moreButton.classList.add('pure-button');
 
             matchDate.textContent = data[i].matchDate;
+            matchTime.textContent = data[i].time;
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
@@ -251,33 +254,32 @@ function displayUpcomingMatches(data) {
               });
             console.log(data[i].matchDate);
             northernLeagueContainer.appendChild(matchDiv);
-            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchUp);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
-            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
             matchDiv.appendChild(moreButton);
-            counter++
-            } else {
-                break;
-            }
-        }
+            
       } 
         
     }
 
     function isthmian() {
-        let counter = 0
+        
+
         for (let i = 0; i < data.length; i++) {
 
-            if (data[i].leagueName === "Non League Premier - Isthmian") {
-            if (counter < 3) {
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('match');
 
             const matchDate = document.createElement('h2');
             matchDate.classList.add('match-date');
 
-            const matchUp = document.createElement('h3');
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('match-time');
+
+            const matchUp = document.createElement('h2');
             matchUp.classList.add('match-up');
 
             const homeTeamBadge = document.createElement('img');
@@ -293,6 +295,7 @@ function displayUpcomingMatches(data) {
             moreButton.classList.add('pure-button');
 
             matchDate.textContent = data[i].matchDate;
+            matchTime.textContent = data[i].time;
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
@@ -300,16 +303,14 @@ function displayUpcomingMatches(data) {
               });
             console.log(data[i].matchDate);
             isthmianLeagueContainer.appendChild(matchDiv)
-            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchUp);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
-            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
             matchDiv.appendChild(moreButton);
-            counter++;
-            } else {
-                break;
-            }
-        }}
+            
+        }
     }
     const displaySouthSouth = document.querySelector('#display-south-south');
     const displaySouthCentral = document.querySelector('#display-south-central');

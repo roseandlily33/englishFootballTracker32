@@ -90,9 +90,16 @@ h1 {
     padding: 0.5em;
     margin-inline: 0.5em;
     margin-block: 1em;
-    height: 100%;
+    height: 1000px;
     color: var(--white);
     text-align: center;
+    overflow-y: auto;
+ }
+
+ .upcoming-header {
+    font-size: 35px;
+    text-decoration: underline var(--gold);
+    font-weight: bolder;
  }
 
  .divison-upcoming-section {
@@ -104,6 +111,11 @@ h1 {
     font-weight: bolder;
     text-decoration: underline var(--gold);
  }
+.division-name-upcoming {
+    font-size: xx-large;
+    font-weight: bold;
+    text-decoration: underline var(--gold);
+}
 
  .match {
     margin: 15px;
@@ -124,6 +136,10 @@ h1 {
         margin: 20px;
         border-radius: 0%;
  }
+
+.button-upcoming-games {
+   
+}
 
  .button-xlarge {
     font-size: 125%;
