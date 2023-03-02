@@ -3,7 +3,9 @@
     --gold: #B69A47;
     --white: #FEFEFE;
     --yellow: #FEDB37;
+
     --hoverColor: #F28928;
+
     --headings: 'Bebas Neue', cursive;
     --main: 'DM Sans', sans-serif;
 }
@@ -125,11 +127,13 @@ input{
     color: var(--blue);
     cursor: pointer;
 }
+
 .searchedFor{
     font-size: 16px;
     color: var(--white);
     padding: 0.4em;
 }
+
 
 /*Stats Container */
 #statsCont {
