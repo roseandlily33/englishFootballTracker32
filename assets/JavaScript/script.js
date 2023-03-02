@@ -73,6 +73,9 @@ function displayUpcomingMatches(data) {
             const matchDate = document.createElement('h2');
             matchDate.classList.add('match-date');
 
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('match-time');
+
             const divisionName = document.createElement('h3');
             divisionName.classList.add('division-name');
     
@@ -92,20 +95,29 @@ function displayUpcomingMatches(data) {
             
             
             matchDate.textContent = data[i].matchDate;
-            divisionName.textContent = data[i].leagueName;
+            matchTime.textContent = data[i].time;
+                if (data[i].leagueName === "Non League Premier - Northern") {
+                    divisionName.textContent = 'Northern'
+                } else if (data[i].leagueName === "Non League Premier - Southern South") {
+                    divisionName.textContent = 'Southern South'
+                } else if (data[i].leagueName === "Non League Premier - Southern Central") {
+                    divisionName.textContent = 'Southern Central'
+                } else if (data[i].leagueName === "Non League Premier - Isthmian") {
+                    divisionName.textContent = 'Isthmian'
+                }
+            
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
                 console.log(data[i].stadium)
               });
             console.log(data[i].matchDate);
-    
-            
-            matchDiv.appendChild(matchDate);
             matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(matchUp);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
-            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
             matchDiv.appendChild(moreButton);
             allUpcomingGamesContainer.appendChild(matchDiv);
         }
@@ -305,7 +317,13 @@ function displayUpcomingMatches(data) {
     const displayIsthmian = document.querySelector('#display-isthmian');
     const displayAllButton = document.querySelector('#display-all');
 
+    southernLeagueContainer.style.display='none';
+    southernCentralLeagueContainer.style.display='none';
+    northernLeagueContainer.style.display='none';
+    isthmianLeagueContainer.style.display='none';
+    allUpcomingGamesContainer.style.display='block';
 
+    displayAll();
 
     displaySouthSouth.addEventListener('click', function(){
         southernSouth(); 
