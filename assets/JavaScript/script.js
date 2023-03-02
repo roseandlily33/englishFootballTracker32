@@ -163,6 +163,7 @@ function displayUpcomingMatches(data) {
             northernLeagueContainer.appendChild(awayTeam);
             northernLeagueContainer.appendChild(matchStadium);
             northernLeagueContainer.appendChild(moreButton);
+            counter++
             } else {
                 break;
             }
