@@ -36,11 +36,11 @@ h1 {
     width: 100%;
     left: 0;
     top: 0;
-    padding-top: 7em;
+    padding-top: 15em;
     overflow: auto;
 }
 #modalCont{
-    width: 80%;
+    width: 60%;
     margin: auto;
     padding: 2em;
     background-color: var(--yellow);
@@ -54,10 +54,10 @@ h1 {
 
 }
 label{
-   font-family: var(--main);
+   font-family: var(--headings);
+   font-size: 2em;
    padding-inline: 0.5em;
    padding-block: 1em;
-   font-size: 1.5rem;
    font-weight: 700;
    text-align: center;
 }
@@ -69,6 +69,7 @@ input{
     width: 60%;
     text-align: center;
     padding: 0.8em;
+    margin: 1em;
 }
 #buttonCont{
     display: flex;
