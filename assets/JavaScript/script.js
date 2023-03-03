@@ -80,6 +80,7 @@ function upcomingMatches(team) {
     .then(function(data) {
          const matchData = data.map(item => {
             return {
+            matchID: item.match_id,
             matchDate: item.match_date,
             time: item.match_time,
             hometeamID: item.match_hometeam_id,
@@ -115,15 +116,56 @@ function displayUpcomingMatches(data) {
     const southernCentralLeagueContainer = document.querySelector('#southern-central-upcoming');
     const northernLeagueContainer = document.querySelector('#northern-upcoming');
     const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming');
-    const matchDataModal = document.querySelector ('#modalUpcoming')
+    const matchDataModal = document.querySelector ('#modalUpcoming');
+    const matchDataModalCont = document.querySelector ('#modalContUpcoming')
     matchDataModal.style.display = 'none';
 
-    function upcomingDataModal() {
+    function upcomingDataModal(matchID) {
+        for (let i = 0; i < data.length; i++) {
+
         
+
+        const matchDiv = document.createElement('div');
+        matchDiv.classList.add('match');
+
+        const matchDate = document.createElement('h2');
+        matchDate.classList.add('match-date');
+
+        const matchTime = document.createElement('h2');
+        matchTime.classList.add('match-time');
+
+        const divisionName = document.createElement('h2');
+        divisionName.classList.add('division-name-upcoming');
+
+        const matchUp = document.createElement('h2');
+        matchUp.classList.add('match-up');
+
+        const homeTeamBadge = document.createElement('img');
+        homeTeamBadge.classList.add('match-up');
+        homeTeamBadge.src = data[i].homeBadge;
+
+        const awayTeamBadge = document.createElement('img');
+        awayTeamBadge.classList.add('match-up');
+        awayTeamBadge.src = data[i].awayBadge;
+
+        const exitButton = document.createElement('button');
+        exitButton.classList.add('pure-button', '#cancelMatchData');
+
+            matchDate.textContent = data[i].matchDate;
+            matchTime.textContent = data[i].time;
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            exitButton.textContent = 'Match Data';
+
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(exitButton);
+            matchDataModalCont.appendChild(matchDiv);
+        }
         
     }
 
     // displays upcoming games for the next 5 days
+    //display the data of the given match
+
     function displayAll () {
         for (let i = 0; i < data.length; i++) {
 
@@ -169,10 +211,13 @@ function displayUpcomingMatches(data) {
             
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             //Match Data will appear in a modal when clicked
+            //Take match ID and send it to the modal
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                console.log(data[i].stadium(data[i].matchID))
+                console.log(data[i].matchID)
                 matchDataModal.style.display = 'block'
+                upcomingDataModal(data[i].matchID)
               });
             console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
@@ -445,7 +490,7 @@ return upcomingGamesContainer;
 }
 
 
-matches();
+displayUpcomingMatches();
 
 // Video part
 
