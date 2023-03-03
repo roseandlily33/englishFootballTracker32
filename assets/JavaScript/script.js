@@ -510,8 +510,8 @@ function getYoutube(teamName) {
 }
 
 function init() {
-    var teamName = 'England%20Championship';
-    getYoutube(teamName);
+   var teamName = 'England%20Championship';
+   getYoutube(teamName);
 };
 
 init();

@@ -127,9 +127,9 @@ input{
 }
 
 .searchedFor{
-    font-size: 16px;
+    font-size: 18px;
     color: var(--white);
-    padding: 0.4em;
+    padding: 0.5em;
 }
 
 
@@ -162,7 +162,8 @@ input{
     margin-block: 1em;
     margin-inline: 0.5em;
     padding: 1em;
-    height: 100%;
+    height: 500px;
+    /*Height is 500 for now, may adjust it again when Jorge's part is in */
 }
 /*Upcoming Matches Container */
 #upcomingCont {
@@ -173,16 +174,18 @@ input{
     padding: 0.5em;
     margin-inline: 0.5em;
     margin-block: 1em;
-    height: 1000px;
+    height: 500px;
     color: var(--white);
     text-align: center;
     overflow-y: auto;
  }
 
  .upcoming-header {
-    font-size: 35px;
+    padding: 0.4em;
+    font-size: 2.5em;
     text-decoration: underline var(--gold);
     font-weight: bolder;
+    font-family: var(--headings);
  }
 
  .divison-upcoming-section {
@@ -190,42 +193,57 @@ input{
  }
 
  .divison-upcoming {
-    font-size: 35px;
+    font-size: 1em;
     font-weight: bolder;
     text-decoration: underline var(--gold);
- }
+ } 
+
 .division-name-upcoming {
-    font-size: xx-large;
+    font-size: 1.6em;
     font-weight: bold;
     text-decoration: underline var(--gold);
 }
-
  .match {
-    margin: 15px;
-    padding: 10px;
-    border: solid var(--gold);
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    min-height: 200px;
  }
-
+.match img{
+    height: 40%;
+    width: 40%;
+    /*I checked multiple screen sizes and percentages and this looked the best */
+}
+.match-time{
+    font-size: 1.2em;
+    padding-block: 0.3em;
+}
  .match-date {
-    padding: 10px;
+    font-size: 1.2em;
+    padding-bottom: 0.3em;
  }
-
  .match-up {
-    padding: 10px;
+    font-size: 1.2em;
+    padding: 0.5em;
  }
-
-
  .button-upcoming-games .pure-button {
-        margin: 20px;
-        border-radius: 0%;
+        margin: 0.4em;
+        border-radius: 10px;
  }
 
  .button-xlarge {
-    font-size: 125%;
+    font-size: 1em;
  }
-/*footer{
+footer{
+    font-family: var(--headings);
     background-color: var(--gold);
+    color: var(--blue);
+    font-size: 1.2em;
     text-align: center; 
     padding: 1em;
-    margin-top: 2em;
-} */
+    margin-top: 1em;
+}
+footer h5{
+    font-family: var(--main);
+}
