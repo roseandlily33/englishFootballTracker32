@@ -64,10 +64,11 @@ h1 {
 }
 
 /*Video Container */
-#video1, #video2 {
+/*change the id's name */
+#videoOne, #videoTwo {
     border: 1px solid var(--yellow);
     border-radius: 25px;
-    margin: 2em;
+    margin: 2em; 
     min-height: 150px;
     padding: 0.5em;
 }
