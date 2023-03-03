@@ -222,6 +222,27 @@ input{
  .button-xlarge {
     font-size: 125%;
  }
+
+ #modalUpcoming {
+    position: fixed;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 7em;
+    overflow: auto;
+ }
+
+#modalContUpcoming {
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    background-color: var(--yellow);
+    border: 3px solid var(--gold);
+    border-radius: 25px;
+}
 /*footer{
     background-color: var(--gold);
     text-align: center; 

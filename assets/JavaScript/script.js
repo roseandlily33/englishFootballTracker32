@@ -114,7 +114,14 @@ function displayUpcomingMatches(data) {
     const southernLeagueContainer = document.querySelector('#southern-south-upcoming');
     const southernCentralLeagueContainer = document.querySelector('#southern-central-upcoming');
     const northernLeagueContainer = document.querySelector('#northern-upcoming');
-    const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming')
+    const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming');
+    const matchDataModal = document.querySelector ('#modalUpcoming')
+    matchDataModal.style.display = 'none';
+
+    function upcomingDataModal() {
+        
+        
+    }
 
     // displays upcoming games for the next 5 days
     function displayAll () {
@@ -165,6 +172,7 @@ function displayUpcomingMatches(data) {
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
                 console.log(data[i].stadium)
+                matchDataModal.style.display = 'block'
               });
             console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
@@ -437,6 +445,7 @@ return upcomingGamesContainer;
 }
 
 displayUpcomingMatches();
+
 
 })//&from=${today}&to=2023-03-09&league_id=153
 
