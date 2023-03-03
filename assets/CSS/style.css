@@ -248,3 +248,30 @@ footer{
 footer h5{
     font-family: var(--main);
 }
+@media screen and (max-width: 500px){
+    #modalCont{
+        height: 300px;
+        width: 300px;
+        padding: 0.6em;
+    }
+    label{
+        font-size: 2em;
+    }
+    input{
+        margin-block: 0.2em;
+        width: 70%;
+        padding-block: 0.8em;  
+    }
+    #buttonCont{
+        display: flex;
+        flex-direction: column;
+    }
+    #cancel{
+        padding-block: 0.5em;
+        margin-block: 0.3em;
+    }
+    #submit{
+        padding-block: 0.5em;
+
+    }
+}
