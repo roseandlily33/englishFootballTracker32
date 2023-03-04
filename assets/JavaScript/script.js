@@ -214,7 +214,7 @@ function displayUpcomingMatches(data) {
             //Take match ID and send it to the modal
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium(data[i].matchID))
+                console.log(data[i].stadium)
                 console.log(data[i].matchID)
                 matchDataModal.style.display = 'block'
                 upcomingDataModal(data[i].matchID)

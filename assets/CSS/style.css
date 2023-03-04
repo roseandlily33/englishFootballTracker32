@@ -77,7 +77,7 @@ input{
     justify-content: space-around;
     padding: 1em;
 }
-#cancel, #submit{
+#cancel, #submit, #cancelMatchData {
     border: none;
     border-radius: 25px;
     padding: 1em 2em;
