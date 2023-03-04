@@ -124,6 +124,8 @@ function displayUpcomingMatches(data) {
 
     function upcomingDataModal(matchID) {
 
+        matchDataModalCont.innerHTML = '';
+
             const clickedMatch = data.find(match => match.matchID === matchID);
 
             const matchDiv = document.createElement('div');
@@ -147,7 +149,12 @@ function displayUpcomingMatches(data) {
             const exitButton = document.createElement('button');
             exitButton.classList.add('pure-button', '#cancelMatchData');
             exitButton.textContent = 'Close';
-          
+
+            exitButton.addEventListener('click',() => {
+                matchDataModal.style.display = 'none'
+            })
+
+            matchDiv.reset
             matchDiv.appendChild(matchDate);
             matchDiv.appendChild(matchTime);
             matchDiv.appendChild(divisionName);
@@ -206,15 +213,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             //Match Data will appear in a modal when clicked
             //Take match ID and send it to the modal
+            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
                 const clickedMatchID = data[i].matchID;
                 const clickedMatch = data.find(match => match.matchID === clickedMatchID);
-                const clickedMatchDate = clickedMatch.matchDate;
                 
-                console.log(clickedMatch.stadium);
                 console.log(clickedMatch.matchID);
-                console.log(clickedMatchDate);
               
                 matchDataModal.style.display = 'block';
                 upcomingDataModal(clickedMatchID);
@@ -264,7 +269,13 @@ function displayUpcomingMatches(data) {
         matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
         moreButton.textContent = 'Match Data';
         moreButton.addEventListener('click', () => {
-            console.log(data[i].stadium)
+            const clickedMatchID = data[i].matchID;
+            const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+            
+            console.log(clickedMatch.matchID);
+          
+            matchDataModal.style.display = 'block';
+            upcomingDataModal(clickedMatchID);
           });
         console.log(data[i].matchDate);
 
@@ -313,7 +324,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
 
@@ -360,8 +377,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium);
-                console.log(data[i].matchRef);
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             northernLeagueContainer.appendChild(matchDiv);
@@ -410,7 +432,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             isthmianLeagueContainer.appendChild(matchDiv)
