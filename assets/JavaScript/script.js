@@ -123,45 +123,37 @@ function displayUpcomingMatches(data) {
     matchDataModal.style.display = 'none';
 
     function upcomingDataModal(matchID) {
-        for (let i = 0; i < data.length; i++) {
 
-        
+            const clickedMatch = data.find(match => match.matchID === matchID);
 
-        const matchDiv = document.createElement('div');
-        matchDiv.classList.add('match');
-
-        const matchDate = document.createElement('h2');
-        matchDate.classList.add('match-date');
-
-        const matchTime = document.createElement('h2');
-        matchTime.classList.add('match-time');
-
-        const divisionName = document.createElement('h2');
-        divisionName.classList.add('division-name-upcoming');
-
-        const matchUp = document.createElement('h2');
-        matchUp.classList.add('match-up');
-
-        const homeTeamBadge = document.createElement('img');
-        homeTeamBadge.classList.add('match-up');
-        homeTeamBadge.src = data[i].homeBadge;
-
-        const awayTeamBadge = document.createElement('img');
-        awayTeamBadge.classList.add('match-up');
-        awayTeamBadge.src = data[i].awayBadge;
-
-        const exitButton = document.createElement('button');
-        exitButton.classList.add('pure-button', '#cancelMatchData');
-
-            matchDate.textContent = data[i].matchDate;
-            matchTime.textContent = data[i].time;
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
-            exitButton.textContent = 'Match Data';
-
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('match');
+          
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('match-date');
+            matchDate.textContent = clickedMatch.matchDate;
+          
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('match-time');
+            matchTime.textContent = clickedMatch.time;
+          
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('division-name-upcoming');
+          
+            const matchUp = document.createElement('h2');
+            matchUp.classList.add('match-up');
+            matchUp.textContent = clickedMatch.hometeamName + ' VS. ' + clickedMatch.awayteamName;
+          
+            const exitButton = document.createElement('button');
+            exitButton.classList.add('pure-button', '#cancelMatchData');
+            exitButton.textContent = 'Close';
+          
             matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(matchUp);
             matchDiv.appendChild(exitButton);
             matchDataModalCont.appendChild(matchDiv);
-        }
         
     }
 
@@ -216,10 +208,16 @@ function displayUpcomingMatches(data) {
             //Take match ID and send it to the modal
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
-                console.log(data[i].matchID)
-                matchDataModal.style.display = 'block'
-                upcomingDataModal(data[i].matchID)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                const clickedMatchDate = clickedMatch.matchDate;
+                
+                console.log(clickedMatch.stadium);
+                console.log(clickedMatch.matchID);
+                console.log(clickedMatchDate);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
@@ -493,7 +491,7 @@ return upcomingGamesContainer;
 
 // Video part
 
-var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
+/* var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
 var searchBtn = document.getElementById('innerSubmit');
 
@@ -564,7 +562,7 @@ function init() {
     getYoutube(teamName);
 };
 
-init();
+init(); */
 
 displayUpcomingMatches();
 
