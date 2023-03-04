@@ -17,6 +17,7 @@ htmlSubmitBtn.addEventListener('click', function(e){
     e.preventDefault();
     let searchedTeam = document.getElementById('formSearch').value;
     savedTeam(searchedTeam);
+    getYoutube(searchedTeam);
   //  searchedTeam.value = "";
 })
 //Deals with the modal submit btn
@@ -26,6 +27,7 @@ submitBtn.addEventListener('click', function(e){
    //get the value
    let searchedTeam = document.getElementById('modalSearch').value;
    savedTeam(searchedTeam);
+   getYoutube(searchedTeam);
 });
 //Store in local storage:
 function savedTeam(searchedTeam){
@@ -489,14 +491,11 @@ function displayUpcomingMatches(data) {
 return upcomingGamesContainer;
 }
 
-
-displayUpcomingMatches();
-
 // Video part
 
 var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
-var searchBtn = document.getElementById('searchButton');
+var searchBtn = document.getElementById('innerSubmit');
 
 var teamName = '';
 
@@ -505,7 +504,7 @@ var teamName = '';
 searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
-    var userInput = document.getElementById('searchInput');
+    var userInput = document.getElementById('formSearch');
     var teamName = userInput.value + " matches round";
     getYoutube(teamName);
 
@@ -556,11 +555,6 @@ function getYoutube(teamName) {
         youtubeVideo2.setAttribute('src', videoSrc2);
 
         }
-            
-            
-        
-
-
     );
 
 }
@@ -568,12 +562,9 @@ function getYoutube(teamName) {
 function init() {
     var teamName = 'England%20Championship';
     getYoutube(teamName);
-
-
 };
 
 init();
-
 
 displayUpcomingMatches();
 

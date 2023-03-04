@@ -3,9 +3,7 @@
     --gold: #B69A47;
     --white: #FEFEFE;
     --yellow: #FEDB37;
-
     --hoverColor: #F28928;
-
     --headings: 'Bebas Neue', cursive;
     --main: 'DM Sans', sans-serif;
 }
@@ -148,11 +146,13 @@ input{
 /*Video Container */
 /*change the id's name */
 #videoOne, #videoTwo {
-    border: 1px solid var(--yellow);
-    border-radius: 25px;
-    margin: 2em; 
+    margin: 2.5em;
     min-height: 150px;
-    padding: 0.5em;
+    max-width: 40%;
+    font-size: 14px;
+    padding: 1em;
+    text-align: center;
+
 }
 
 /*League Standings Container */
