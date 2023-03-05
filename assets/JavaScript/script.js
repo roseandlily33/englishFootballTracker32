@@ -97,6 +97,7 @@ function upcomingMatches(team) {
             homeLineUp: item.lineup.home,
             awayLineUp: item.lineup.away,
             homeStartLineupPlayer: item.lineup.home.starting_lineups,
+            awayStartLineupPlayer: item.lineup.away.starting_lineups
 
 
         };
@@ -161,46 +162,130 @@ function displayUpcomingMatches(data) {
             matchDataStadium.classList.add('match-data-stadium');
             matchDataStadium.textContent = 'Stadium: ' + clickedMatch.stadium;
 
-        // player line ups table
+        //  home player line ups table
 
         const homeMatchLineups = document.createElement('table'); 
         homeMatchLineups.classList.add('pure-table');
 
-        const thead = document.createElement('thead');
-        const tr = document.createElement('tr');
-        const thPlayer = document.createElement('th');
-        thPlayer.textContent = 'Player';
-        const thNumber = document.createElement('th');
-        thNumber.textContent = 'Number';
-        const thPosition = document.createElement('th');
-        thPosition.textContent = 'Position';
+        const homethead = document.createElement('thead');
+        const hometr = document.createElement('tr');
+        const homethPlayer = document.createElement('th');
+        homethPlayer.textContent = 'Player';
+        const homethNumber = document.createElement('th');
+        homethNumber.textContent = 'Number';
+        const homethPosition = document.createElement('th');
+        homethPosition.textContent = 'Position';
 
-        tr.appendChild(thPlayer);
-        tr.appendChild(thNumber);
-        tr.appendChild(thPosition);
-        thead.appendChild(tr);
-        homeMatchLineups.appendChild(thead);
+        hometr.appendChild(homethPlayer);
+        hometr.appendChild(homethNumber);
+        hometr.appendChild(homethPosition);
+        homethead.appendChild(hometr);
+        homeMatchLineups.appendChild(homethead);
         const teamhomeLineUp = clickedMatch.homeStartLineupPlayer;
-        const tbody = document.createElement('tbody');
+        const hometbody = document.createElement('tbody');
 
         console.log(teamhomeLineUp);
 
         teamhomeLineUp.forEach(item => {
-        const tr = document.createElement('tr');
-        const tdPlayer = document.createElement('td');
-        tdPlayer.textContent = item.lineup_player
-        const tdNumber = document.createElement('td');
-        tdNumber.textContent = item.lineup_number
-        const tdPosition = document.createElement('td');
-        tdPosition.textContent = item.lineup_position
-        tr.appendChild(tdPlayer);
-        tr.appendChild(tdNumber);
-        tr.appendChild(tdPosition);
-        tbody.appendChild(tr);
+        const hometr = document.createElement('tr');
+        const hometdPlayer = document.createElement('td');
+        hometdPlayer.textContent = item.lineup_player
+        const hometdNumber = document.createElement('td');
+        hometdNumber.textContent = item.lineup_number
+        const hometdPosition = document.createElement('td');
+        if (item.lineup_position === '1') {
+        hometdPosition.textContent = 'GoalKeeper'
+        } else if (item.lineup_position === '2') {
+        hometdPosition.textContent = 'Right Center Back'
+        } else if (item.lineup_position === '3') {
+            hometdPosition.textContent = 'Left Wing Back'
+        } else if (item.lineup_position === '4') {
+            hometdPosition.textContent = 'Left Center Back'
+        } else if (item.lineup_position === '5') {
+            hometdPosition.textContent = 'Center Back'
+        } else if (item.lineup_position === '6') {
+            hometdPosition.textContent = 'Defensive MidField'
+        } else if (item.lineup_position === '7') {
+            hometdPosition.textContent = 'Right Wing Back'
+        } else if (item.lineup_position === '8') {
+            hometdPosition.textContent = 'Central Midfield'
+        } else if (item.lineup_position === '9') {
+            hometdPosition.textContent = 'Striker'
+        } else if (item.lineup_position === '10') {
+            hometdPosition.textContent = 'Attacking Midfield'
+        } else if (item.lineup_position === '11') {
+            hometdPosition.textContent = 'Central Forward'
+        } else {
+            hometdPosition.textContent = 'N/A' 
+        }
+        hometr.appendChild(hometdPlayer);
+        hometr.appendChild(hometdNumber);
+        hometr.appendChild(hometdPosition);
+        hometbody.appendChild(hometr);
         });
         
 
+        //away players lineup
 
+        const awayMatchLineups = document.createElement('table'); 
+        awayMatchLineups.classList.add('pure-table');
+
+        const awaythead = document.createElement('thead');
+        const awaytr = document.createElement('tr');
+        const awaythPlayer = document.createElement('th');
+        awaythPlayer.textContent = 'Player';
+        const awaythNumber = document.createElement('th');
+        awaythNumber.textContent = 'Number';
+        const awaythPosition = document.createElement('th');
+        awaythPosition.textContent = 'Position';
+
+        awaytr.appendChild(awaythPlayer);
+        awaytr.appendChild(awaythNumber);
+        awaytr.appendChild(awaythPosition);
+        awaythead.appendChild(awaytr);
+        awayMatchLineups.appendChild(awaythead);
+        const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
+        const awaytbody = document.createElement('tbody');
+
+        console.log(teamhomeLineUp);
+
+        awayteamLineUp.forEach(item => {
+        const awaytr = document.createElement('tr');
+        const awaytdPlayer = document.createElement('td');
+        awaytdPlayer.textContent = item.lineup_player
+        const awaytdNumber = document.createElement('td');
+        awaytdNumber.textContent = item.lineup_number
+        const awaytdPosition = document.createElement('td');
+        if (item.lineup_position === '1') {
+        awaytdPosition.textContent = 'GoalKeeper'
+        } else if (item.lineup_position === '2') {
+        awaytdPosition.textContent = 'Right Center Back'
+        } else if (item.lineup_position === '3') {
+            awaytdPosition.textContent = 'Left Wing Back'
+        } else if (item.lineup_position === '4') {
+            awaytdPosition.textContent = 'Left Center Back'
+        } else if (item.lineup_position === '5') {
+            awaytdPosition.textContent = 'Center Back'
+        } else if (item.lineup_position === '6') {
+            awaytdPosition.textContent = 'Defensive MidField'
+        } else if (item.lineup_position === '7') {
+            awaytdPosition.textContent = 'Right Wing Back'
+        } else if (item.lineup_position === '8') {
+            awaytdPosition.textContent = 'Central Midfield'
+        } else if (item.lineup_position === '9') {
+            awaytdPosition.textContent = 'Striker'
+        } else if (item.lineup_position === '10') {
+            awaytdPosition.textContent = 'Attacking Midfield'
+        } else if (item.lineup_position === '11') {
+            awaytdPosition.textContent = 'Central Forward'
+        } else {
+            awaytdPosition.textContent = 'N/A' 
+        }
+        awaytr.appendChild(awaytdPlayer);
+        awaytr.appendChild(awaytdNumber);
+        awaytr.appendChild(awaytdPosition);
+        awaytbody.appendChild(awaytr);
+        });
            
 
             const dataMatchRef = document.createElement('h3');
@@ -226,8 +311,10 @@ function displayUpcomingMatches(data) {
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(dataMatchRef);
             matchDiv.appendChild(homeMatchLineups);
-            homeMatchLineups.appendChild(tbody);
+            homeMatchLineups.appendChild(hometbody);
+            awayMatchLineups.appendChild(awaytbody);
             matchDiv.appendChild(homeMatchLineups);
+            matchDiv.appendChild(awayMatchLineups);
             matchDiv.appendChild(exitButton);
             matchDataModalCont.appendChild(matchDiv);
         
