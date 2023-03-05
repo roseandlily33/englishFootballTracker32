@@ -246,11 +246,13 @@ input{
 }
 
 .modal-match-up-img-2 {
-    margin-left: 85px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modal-match-up-img-1 {
-    margin-left: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modal-match-time {

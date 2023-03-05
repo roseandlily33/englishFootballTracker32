@@ -167,6 +167,10 @@ function displayUpcomingMatches(data) {
         const homeMatchLineups = document.createElement('table'); 
         homeMatchLineups.classList.add('pure-table');
 
+        const homeLineupHeader = document.createElement('h3');
+        homeLineupHeader.classList.add('homeLineupHeader');
+        homeLineupHeader.textContent = 'Home Starting Line up';
+
         const homethead = document.createElement('thead');
         const hometr = document.createElement('tr');
         const homethPlayer = document.createElement('th');
@@ -241,6 +245,10 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         
         const awayMatchLineups = document.createElement('table'); 
         awayMatchLineups.classList.add('pure-table');
+
+        const awayLineupHeader = document.createElement('h3');
+        awayLineupHeader.classList.add('awayLineupHeader');
+        awayLineupHeader.textContent = 'Away Starting Line up';
 
         const awaythead = document.createElement('thead');
         const awaytr = document.createElement('tr');
@@ -336,7 +344,9 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             matchDiv.appendChild(homeMatchLineups);
             homeMatchLineups.appendChild(hometbody);
             awayMatchLineups.appendChild(awaytbody);
+            matchDiv.appendChild(homeLineupHeader);
             matchDiv.appendChild(homeMatchLineups);
+            matchDiv.appendChild(awayLineupHeader);
             matchDiv.appendChild(awayMatchLineups);
             matchDiv.appendChild(exitButton);
             matchDataModalCont.appendChild(matchDiv);
