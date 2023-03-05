@@ -163,7 +163,7 @@ function displayUpcomingMatches(data) {
             matchDataStadium.textContent = 'Stadium: ' + clickedMatch.stadium;
 
         //  home player line ups table
-
+           
         const homeMatchLineups = document.createElement('table'); 
         homeMatchLineups.classList.add('pure-table');
 
@@ -185,7 +185,7 @@ function displayUpcomingMatches(data) {
         const hometbody = document.createElement('tbody');
 
         console.log(teamhomeLineUp);
-
+if (clickedMatch.homeStartLineupPlayer.length !== 0){
         teamhomeLineUp.forEach(item => {
         const hometr = document.createElement('tr');
         const hometdPlayer = document.createElement('td');
@@ -223,10 +223,22 @@ function displayUpcomingMatches(data) {
         hometr.appendChild(hometdPosition);
         hometbody.appendChild(hometr);
         });
-        
+    } else if (clickedMatch.homeStartLineupPlayer.length === 0) {
+            const NAhometr = document.createElement('tr');
+            const NAhometdPlayer = document.createElement('td');
+            NAhometdPlayer.textContent = 'N/A'
+            const NAhometdNumber = document.createElement('td');
+            NAhometdNumber.textContent = 'N/A'
+            const NAhometdPosition = document.createElement('td');
+            NAhometdPosition.textContent = 'N/A'
+            NAhometr.appendChild(NAhometdPlayer);
+            NAhometr.appendChild(NAhometdNumber);
+            NAhometr.appendChild(NAhometdPosition);
+            hometbody.appendChild(NAhometr);
+    }
 
         //away players lineup
-
+        
         const awayMatchLineups = document.createElement('table'); 
         awayMatchLineups.classList.add('pure-table');
 
@@ -247,8 +259,7 @@ function displayUpcomingMatches(data) {
         const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
         const awaytbody = document.createElement('tbody');
 
-        console.log(teamhomeLineUp);
-
+        if (clickedMatch.awayStartLineupPlayer.length !== 0) {
         awayteamLineUp.forEach(item => {
         const awaytr = document.createElement('tr');
         const awaytdPlayer = document.createElement('td');
@@ -286,7 +297,19 @@ function displayUpcomingMatches(data) {
         awaytr.appendChild(awaytdPosition);
         awaytbody.appendChild(awaytr);
         });
-           
+    } else if (clickedMatch.awayStartLineupPlayer.length === 0) {
+            const NAawaytr = document.createElement('tr');
+            const NAawaytdPlayer = document.createElement('td');
+            NAawaytdPlayer.textContent = 'N/A'
+            const NAawaytdNumber = document.createElement('td');
+            NAawaytdNumber.textContent = 'N/A'
+            const NAawaytdPosition = document.createElement('td');
+            NAawaytdPosition.textContent = 'N/A'
+            NAawaytr.appendChild(NAawaytdPlayer);
+            NAawaytr.appendChild(NAawaytdNumber);
+            NAawaytr.appendChild(NAawaytdPosition);
+            awaytbody.appendChild(NAawaytr);
+    }
 
             const dataMatchRef = document.createElement('h3');
             dataMatchRef.classList.add('match-data-stadium');
