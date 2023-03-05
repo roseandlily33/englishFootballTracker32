@@ -244,6 +244,26 @@ input{
     border: 3px solid var(--gold);
     border-radius: 25px;
 }
+
+.modal-match-up-img-2 {
+    margin-left: 85px;
+}
+
+.modal-match-up-img-1 {
+    margin-left: 750px;
+}
+
+.modal-match-time {
+    text-align: center;
+}
+
+.modal-match-date {
+    text-align: center;
+}
+
+.match-data-stadium {
+    text-align: center;
+}
 /*footer{
     background-color: var(--gold);
     text-align: center; 

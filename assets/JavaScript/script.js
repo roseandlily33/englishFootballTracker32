@@ -74,7 +74,7 @@ yyyy = tomorrow.getFullYear();
 tomorrow = yyyy + '-' + mm + '-' + dd
 
 function upcomingMatches(team) {
-    fetch( `https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
+    fetch( `https://apiv3.apifootball.com/?action=get_events&from=2023-02-20&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
@@ -95,7 +95,10 @@ function upcomingMatches(team) {
             matchRef: item.match_referee,
             leagueName: item.league_name,
             homeLineUp: item.lineup.home,
-            awayLineUp: item.lineup.away
+            awayLineUp: item.lineup.away,
+            homeStartLineupPlayer: item.lineup.home.starting_lineups,
+
+
         };
     });
         console.log('--->'+(JSON.stringify(matchData)));
@@ -129,22 +132,80 @@ function displayUpcomingMatches(data) {
             const clickedMatch = data.find(match => match.matchID === matchID);
 
             const matchDiv = document.createElement('div');
-            matchDiv.classList.add('match');
+            matchDiv.classList.add('modal-match');
           
             const matchDate = document.createElement('h2');
-            matchDate.classList.add('match-date');
-            matchDate.textContent = clickedMatch.matchDate;
+            matchDate.classList.add('modal-match-date');
+            matchDate.textContent = 'Date: ' + clickedMatch.matchDate;
           
             const matchTime = document.createElement('h2');
-            matchTime.classList.add('match-time');
-            matchTime.textContent = clickedMatch.time;
+            matchTime.classList.add('modal-match-time');
+            matchTime.textContent = 'Time: ' + clickedMatch.time;
+
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('modal-match-up-img-1');
+            homeTeamBadge.src = clickedMatch.homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('modal-match-up-img-2');
+            awayTeamBadge.src = clickedMatch.awayBadge;
           
             const divisionName = document.createElement('h2');
-            divisionName.classList.add('division-name-upcoming');
+            divisionName.classList.add('modal-division-name-upcoming');
           
-            const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            const matchUp = document.createElement('h1');
+            matchUp.classList.add('modal-match-up');
             matchUp.textContent = clickedMatch.hometeamName + ' VS. ' + clickedMatch.awayteamName;
+
+            const matchDataStadium = document.createElement('h3');
+            matchDataStadium.classList.add('match-data-stadium');
+            matchDataStadium.textContent = 'Stadium: ' + clickedMatch.stadium;
+
+        // player line ups table
+
+        const homeMatchLineups = document.createElement('table'); 
+        homeMatchLineups.classList.add('pure-table');
+
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        const thPlayer = document.createElement('th');
+        thPlayer.textContent = 'Player';
+        const thNumber = document.createElement('th');
+        thNumber.textContent = 'Number';
+        const thPosition = document.createElement('th');
+        thPosition.textContent = 'Position';
+
+        tr.appendChild(thPlayer);
+        tr.appendChild(thNumber);
+        tr.appendChild(thPosition);
+        thead.appendChild(tr);
+        homeMatchLineups.appendChild(thead);
+        const teamhomeLineUp = clickedMatch.homeStartLineupPlayer;
+        const tbody = document.createElement('tbody');
+
+        console.log(teamhomeLineUp);
+
+        teamhomeLineUp.forEach(item => {
+        const tr = document.createElement('tr');
+        const tdPlayer = document.createElement('td');
+        tdPlayer.textContent = item.lineup_player
+        const tdNumber = document.createElement('td');
+        tdNumber.textContent = item.lineup_number
+        const tdPosition = document.createElement('td');
+        tdPosition.textContent = item.lineup_position
+        tr.appendChild(tdPlayer);
+        tr.appendChild(tdNumber);
+        tr.appendChild(tdPosition);
+        tbody.appendChild(tr);
+        });
+        
+
+
+           
+
+            const dataMatchRef = document.createElement('h3');
+            dataMatchRef.classList.add('match-data-stadium');
+            dataMatchRef.textContent = 'Match Referee: ' + clickedMatch.matchRef;
           
             const exitButton = document.createElement('button');
             exitButton.classList.add('pure-button', '#cancelMatchData');
@@ -154,11 +215,19 @@ function displayUpcomingMatches(data) {
                 matchDataModal.style.display = 'none'
             })
 
-            matchDiv.reset
-            matchDiv.appendChild(matchDate);
-            matchDiv.appendChild(matchTime);
-            matchDiv.appendChild(divisionName);
+            console.log(clickedMatch.homeStartLineupPlayer);
+            
             matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchDataStadium);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(dataMatchRef);
+            matchDiv.appendChild(homeMatchLineups);
+            homeMatchLineups.appendChild(tbody);
+            matchDiv.appendChild(homeMatchLineups);
             matchDiv.appendChild(exitButton);
             matchDataModalCont.appendChild(matchDiv);
         
