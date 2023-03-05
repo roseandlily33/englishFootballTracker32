@@ -235,6 +235,7 @@ input{
 
  .button-xlarge {
     font-size: 1em;
+
  }
 
  #modalUpcoming {
@@ -279,7 +280,9 @@ input{
 .match-data-stadium {
     text-align: center;
 }
-/*footer{
+footer{
+
+ }
 footer{
     font-family: var(--headings);
     background-color: var(--gold);
