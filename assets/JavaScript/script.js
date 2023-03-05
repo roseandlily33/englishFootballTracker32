@@ -240,7 +240,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             NAhometr.appendChild(NAhometdPosition);
             hometbody.appendChild(NAhometr);
     }
-
+ 
         //away players lineup
         
         const awayMatchLineups = document.createElement('table'); 
@@ -775,8 +775,8 @@ function getYoutube(teamName) {
 }
 
 function init() {
-    var teamName = 'England%20Championship';
-    getYoutube(teamName);
+   var teamName = 'England%20Championship';
+   getYoutube(teamName);
 };
 
 init(); 
