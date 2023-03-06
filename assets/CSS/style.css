@@ -533,6 +533,25 @@ footer h5{
          padding: 0.5em;
          margin: 0.5em;
      }
+     .button-past-games{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-block: 0.5em;
+        justify-content: space-evenly;
+     }
+     .button-past-games .pure-button{
+         margin: 0.3em;
+     }
+     .match-up2{
+        font-size: 1em;
+     }
+     .past-match-date{
+        font-size: 0.8em;
+     }
+     .home-match-result{
+        font-size: 0.8em;
+     }
 }
 @media screen and (max-width: 380px){
     #formSearch{
