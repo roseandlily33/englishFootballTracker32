@@ -83,7 +83,7 @@ input{
     justify-content: space-around;
     padding: 1em;
 }
-#cancel, #submit{
+#cancel, #submit, #cancelMatchData {
     border: none;
     border-radius: 25px;
     padding: 1em 2em;
@@ -170,9 +170,82 @@ input{
     margin-block: 1em;
     margin-inline: 0.5em;
     padding: 1em;
-    height: 500px;
+    height: 1000px;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
+    /* adjusted to 1000px for now -Jonson */
 }
+
+.league-table {
+    font-family : Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 25%;  
+    height: 500px;
+}
+
+th{
+    text-align: left;
+    border: 1px black;
+    padding: 5px;   
+}
+
+td{
+    border: 1px; 
+    padding: 5px;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+.league-standings-container:nth-child(odd) {
+background-color: #B69A47;
+}
+
+.league-standings-container:nth-child(even) {
+    background-color:#001282;
+}
+
+.league-standings-column {
+    background-color: var(--white)
+}
+
+.league-standings-container:nth-child(1) {
+    background-color: green;
+}
+
+.league-standings-container:nth-child(2) {
+    background-color: rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(3) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(4) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(5) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(19) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(20) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(21) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(22) {
+    background-color: red;
+}
+
+
 /*Upcoming Matches Container */
 #upcomingCont {
     background-color: var(--blue);
@@ -242,7 +315,52 @@ input{
 
  .button-xlarge {
     font-size: 1em;
+
  }
+
+ #modalUpcoming {
+    position: fixed;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 7em;
+    overflow: auto;
+ }
+
+#modalContUpcoming {
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    background-color: var(--yellow);
+    border: 3px solid var(--gold);
+    border-radius: 25px;
+}
+
+.modal-match-up-img-2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-match-up-img-1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-match-time {
+    text-align: center;
+}
+
+.modal-match-date {
+    text-align: center;
+}
+
+.match-data-stadium {
+    text-align: center;
+}
+
 footer{
     font-family: var(--headings);
     background-color: var(--gold);
