@@ -13,6 +13,7 @@ htmlSubmitBtn.addEventListener('click', function(e){
     savedTeam(searchedTeam);
     let teamName = searchedTeam + " highlight round";
     getYoutube(teamName);
+    formSearch.value = '';
 })
 //Deals with the modal submit btn
 submitBtn.addEventListener('click', function(e){
@@ -23,6 +24,7 @@ submitBtn.addEventListener('click', function(e){
    savedTeam(searchedTeam);
    let teamName = searchedTeam + " highlight round";
    getYoutube(teamName);
+   formSearch.value = '';
 });
 
 let storedTeams = JSON.parse(localStorage.getItem('storedTeams')) || [];
