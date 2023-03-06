@@ -168,9 +168,9 @@ function displayPastMatches (data) {
             allPastGamesContainer.appendChild(matchDiv);
         }
     }
-    function displaySoutSouthPast () {
+    function displaySouthSouthPast () {
         for (let i = 0; i < data.length; i++) {
-
+            if (data[i].leagueName === "Non League Premier - Southern South") {
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('pastmatch');
     
@@ -197,18 +197,49 @@ function displayPastMatches (data) {
             awayTeamBadge.src = data[i].awayBadge;
     
             
-            
-            matchDate.textContent = data[i].matchDate;
-            //Removes the non premier league portion of the league name
-                if (data[i].leagueName === "Non League Premier - Northern") {
-                    divisionName.textContent = 'Northern'
-                } else if (data[i].leagueName === "Non League Premier - Southern South") {
-                    divisionName.textContent = 'Southern South'
-                } else if (data[i].leagueName === "Non League Premier - Southern Central") {
-                    divisionName.textContent = 'Southern Central'
-                } else if (data[i].leagueName === "Non League Premier - Isthmian") {
-                    divisionName.textContent = 'Isthmian'
-                }
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            //Match Data will appear in a modal when clicked
+            //Take match ID and send it to the modal
+            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
+            console.log(data[i].matchDate);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(homeMatchScore);
+            matchDiv.appendChild(matchDate);
+            pastSouthernLeagueContainer.appendChild(matchDiv);
+        }
+    }
+    }
+    function displaySouthCentralPast () {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].leagueName === "Non League Premier - Southern Central") {
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('pastmatch');
+    
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('past-match-date');
+            matchDate.textContent = data[i].Date;
+
+            const homeMatchScore = document.createElement('h2');
+            homeMatchScore.classList.add('home-match-result');
+            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('division-name-past');
+    
+            const matchUp = document.createElement('h2');
+            matchUp.classList.add('match-up');
+    
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('past-match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('past-match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+    
             
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             //Match Data will appear in a modal when clicked
@@ -221,10 +252,156 @@ function displayPastMatches (data) {
             matchDiv.appendChild(matchUp);
             matchDiv.appendChild(homeMatchScore);
             matchDiv.appendChild(matchDate);
-            allPastGamesContainer.appendChild(matchDiv);
+            pastSouthernCentralLeagueContainer.appendChild(matchDiv);
         }
     }
-displayAllPast();
+    }
+    function displayNorthPast () {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].leagueName === "Non League Premier - Northern") {
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('pastmatch');
+    
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('past-match-date');
+            matchDate.textContent = data[i].Date;
+
+            const homeMatchScore = document.createElement('h2');
+            homeMatchScore.classList.add('home-match-result');
+            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('division-name-past');
+    
+            const matchUp = document.createElement('h2');
+            matchUp.classList.add('match-up');
+    
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('past-match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('past-match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+    
+            
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            //Match Data will appear in a modal when clicked
+            //Take match ID and send it to the modal
+            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
+            console.log(data[i].matchDate);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(homeMatchScore);
+            matchDiv.appendChild(matchDate);
+            pastNorthernLeagueContainer.appendChild(matchDiv);
+        }
+    }
+    }
+    function displayIshtmianPast () {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].leagueName === "Non League Premier - Isthmian") {
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('pastmatch');
+    
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('past-match-date');
+            matchDate.textContent = data[i].Date;
+
+            const homeMatchScore = document.createElement('h2');
+            homeMatchScore.classList.add('home-match-result');
+            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('division-name-past');
+    
+            const matchUp = document.createElement('h2');
+            matchUp.classList.add('match-up');
+    
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('past-match-up');
+            homeTeamBadge.src = data[i].homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('past-match-up');
+            awayTeamBadge.src = data[i].awayBadge;
+    
+            
+            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            //Match Data will appear in a modal when clicked
+            //Take match ID and send it to the modal
+            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
+            console.log(data[i].matchDate);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(homeMatchScore);
+            matchDiv.appendChild(matchDate);
+            pastIsthmianLeagueContainer.appendChild(matchDiv);
+        }
+    }
+    }
+    const displayPastSouthSouthBtn = document.querySelector('#display-past-south-south');
+    const displayPastSouthCentralBtn = document.querySelector('#display-past-south-central');
+    const displayPastNorthBtn = document.querySelector('#display-past-north');
+    const displayPastIsthmianBtn = document.querySelector('#display-past-isthmian');
+    const displayPastAllButtonbtn = document.querySelector('#display-past-all');
+
+    pastSouthernLeagueContainer.style.display='none';
+    pastSouthernCentralLeagueContainer.style.display='none';
+    pastNorthernLeagueContainer.style.display='none';
+    pastIsthmianLeagueContainer.style.display='none';
+    allPastGamesContainer.style.display='block';
+
+    displayAllPast();
+
+    displayPastSouthSouthBtn.addEventListener('click', function(){
+        displaySouthSouthPast();
+        pastSouthernLeagueContainer.style.display='block';
+        pastSouthernCentralLeagueContainer.style.display='none';
+        pastNorthernLeagueContainer.style.display='none';
+        pastIsthmianLeagueContainer.style.display='none';
+        allPastGamesContainer.style.display='none';
+       })
+    
+    displayPastSouthCentralBtn.addEventListener('click', function(){
+        displaySouthCentralPast();
+        pastSouthernLeagueContainer.style.display='none';
+        pastSouthernCentralLeagueContainer.style.display='block';
+        pastNorthernLeagueContainer.style.display='none';
+        pastIsthmianLeagueContainer.style.display='none';
+        allPastGamesContainer.style.display='none';
+    })
+    
+    displayPastNorthBtn.addEventListener('click', function(){
+        displayNorthPast();
+        pastSouthernLeagueContainer.style.display='none';
+        pastSouthernCentralLeagueContainer.style.display='none';
+        pastNorthernLeagueContainer.style.display='block';
+        pastIsthmianLeagueContainer.style.display='none';
+        allPastGamesContainer.style.display='none';
+    })
+
+    displayPastIsthmianBtn.addEventListener('click', function(){
+         displayIshtmianPast();
+        pastSouthernLeagueContainer.style.display='none';
+        pastSouthernCentralLeagueContainer.style.display='none';
+        pastNorthernLeagueContainer.style.display='none';
+        pastIsthmianLeagueContainer.style.display='block';
+        allPastGamesContainer.style.display='none';
+    })
+
+    displayPastAllButtonbtn.addEventListener('click', function(){
+        displayAllPast();
+        pastSouthernLeagueContainer.style.display='none';
+        pastSouthernCentralLeagueContainer.style.display='none';
+        pastNorthernLeagueContainer.style.display='none';
+        pastIsthmianLeagueContainer.style.display='none';
+        allPastGamesContainer.style.display='block';
+   })
 }
 
 //Formats the API call to only call the current day and to a specified date
