@@ -706,7 +706,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
 return upcomingGamesContainer;
 }
 
-/* // Video part
+// Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
@@ -779,7 +779,7 @@ function init() {
    getYoutube(teamName);
 };
 
-init();  */
+init();  
 
 //Jorge Standngs
 function displayStandingsTable(stageName) {
