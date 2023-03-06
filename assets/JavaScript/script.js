@@ -706,7 +706,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
 return upcomingGamesContainer;
 }
 
-// Video part
+/* // Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
@@ -779,10 +779,76 @@ function init() {
    getYoutube(teamName);
 };
 
-init(); 
+init();  */
 
-displayUpcomingMatches();
+//Jorge Standngs
+function displayStandingsTable(leagueId, stageName) {
+const footballAPIkey2 = 'b68068c14aa1be71d20cd0ab16889081f580d11f4a028a039beaf15cf855e34d'
 
+fetch("https://apiv3.apifootball.com/?action=get_standings&league_id=149&APIkey=" + footballAPIkey2).then((data)=>{
+//console.log(data);
+return data.json(); //converted data to json
+}).then((objectData)=>{
+console.log(objectData[0].title);
+let tableData="";
+objectData.filter((values) => values.stage_name === stageName)
+    .forEach(values => {
+
+
+  tableData+=`<tr>
+  <td>${values.stage_name}</td>
+  <td>${values.overall_league_position}</td>
+  <td>${values.team_name}</td>
+  <td>${values.overall_league_W}</td>
+  <td>${values.overall_league_D}</td>
+  <td>${values.overall_league_L}</td>
+  <td>${values.overall_league_PTS}</td>
+</tr>`
+  
+
+
+});
+console.log(tableData);
+document.querySelector('.league-table').innerHTML = tableData;
+
+})
+.catch(error => console.error(error));
+
+}
+const displaySouthSouthTable = document.querySelector('#display-south-south-league');
+const displaySouthCentralTable = document.querySelector('#display-south-central-league');
+const displayNorthTable = document.querySelector('#display-north-league');
+const displayIsthmianTable = document.querySelector('#display-isthmian-league');
+
+// Event handler for displaySouthSouthTable
+displaySouthSouthTable.addEventListener('click', function() {
+    console.log('Displaying South South Table');
+    // Call function to display South South table
+    displayStandingsTable('149', 'Southern South');
+  });
+  
+  // Event handler for displaySouthCentralTable
+  displaySouthCentralTable.addEventListener('click', function() {
+    console.log('Displaying South Central Table');
+    // Call function to display South Central table
+    displayStandingsTable('149', 'Southern Central');
+  });
+  
+  // Event handler for displayNorthTable
+  displayNorthTable.addEventListener('click', function() {
+    console.log('Displaying North Table');
+    // Call function to display North table
+    displayStandingsTable('149', 'Northern');
+  });
+  
+  // Event handler for displayIsthmianTable
+  displayIsthmianTable.addEventListener('click', function() {
+    console.log('Displaying Isthmian Table');
+    // Call function to display Isthmian table
+    displayStandingsTable('149', 'Isthmian');
+  });
+
+  displayUpcomingMatches();
 
 })//&from=${today}&to=2023-03-09&league_id=153
 
