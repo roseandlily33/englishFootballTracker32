@@ -1,35 +1,42 @@
-//Pop up modal:
+//Wrapped everything in the on doc load:
+document.addEventListener('DOMContentLoaded', function() {
+ //Pop up modal:
 let htmlSubmitBtn = document.getElementById('innerSubmit');
 let submitBtn = document.getElementById('submit');
 let modalEl = document.getElementById('modal');
-let mainContent = document.getElementById('mainContent')
 let cancelBtn = document.getElementById('cancel');
 let faveTeamCont = document.getElementById('faveTeams');
-
-let storedTeams = [];
-//Cancel btn
-cancelBtn.addEventListener('click', function(e){
-   e.preventDefault();
-   modalEl.classList.add('hide');
-})
 //Deals with the on html submit btn
 htmlSubmitBtn.addEventListener('click', function(e){
     e.preventDefault();
     let searchedTeam = document.getElementById('formSearch').value;
     savedTeam(searchedTeam);
-    getYoutube(searchedTeam);
-  //  searchedTeam.value = "";
+    let teamName = searchedTeam + " highlight round";
+    getYoutube(teamName);
+    formSearch.value = '';
 })
-//Deals with the modal submit btn
+//Deals with the modal submit btn:
 submitBtn.addEventListener('click', function(e){
   e.preventDefault();
    modalEl.classList.add('hide');
-   //get the value
    let searchedTeam = document.getElementById('modalSearch').value;
    savedTeam(searchedTeam);
-   getYoutube(searchedTeam);
+   let teamName = searchedTeam + " highlight round";
+   getYoutube(teamName);
+   formSearch.value = '';
 });
-//Store in local storage:
+let storedTeams = JSON.parse(localStorage.getItem('storedTeams')) || [];
+//Cancel btn:
+cancelBtn.addEventListener('click', function(e){
+   e.preventDefault();
+   modalEl.classList.add('hide');
+})
+faveClearBtn.addEventListener('click', function(){
+    window.localStorage.clear();
+    storedTeams = [];
+    faveTeamCont.innerHTML = '';
+})
+    //Store in local storage:
 function savedTeam(searchedTeam){
     storedTeams.push(searchedTeam);
      localStorage.setItem('storedTeams', JSON.stringify(storedTeams));
@@ -37,19 +44,19 @@ function savedTeam(searchedTeam){
      returnTeam();
 }
 //Return from local storage:
-function returnTeam(){
-    faveTeamCont.innerHTML = "";
-    let storedParse = JSON.parse(localStorage.getItem('storedTeams'));
-    for(let i = 0; i < storedParse.length; i++){
-        let showTeam = storedParse[i];
-        let newli = document.createElement('h6');
-        newli.textContent = showTeam;
-        newli.classList.add('searchedFor');
-        faveTeamCont.append(newli);
+    function returnTeam(){
+        faveTeamCont.innerHTML = "";
+        let storedParse = JSON.parse(localStorage.getItem('storedTeams'));
+        for(let i = 0; i < storedParse.length; i++){
+            let showTeam = storedParse[i];
+            let newli = document.createElement('h6');
+            newli.textContent = showTeam;
+            newli.classList.add('searchedFor');
+            faveTeamCont.append(newli);
+        }
     }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+    //Gets the teams saved on load:
+    returnTeam();
 
 const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d64097792'
 let today = new Date();
@@ -502,7 +509,7 @@ function displayUpcomingMatches(data) {
             const matchTime = document.createElement('h2');
             matchTime.classList.add('modal-match-time');
             matchTime.textContent = 'Time: ' + clickedMatch.time;
-
+           
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('modal-match-up-img-1');
             homeTeamBadge.src = clickedMatch.homeBadge;
@@ -525,7 +532,7 @@ function displayUpcomingMatches(data) {
         //  home player line ups table
            
         const homeMatchLineups = document.createElement('table'); 
-        homeMatchLineups.classList.add('pure-table');
+        homeMatchLineups.classList.add('pure-table', 'homeTable');
 
         const homeLineupHeader = document.createElement('h3');
         homeLineupHeader.classList.add('homeLineupHeader');
@@ -604,7 +611,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         //away players lineup
         
         const awayMatchLineups = document.createElement('table'); 
-        awayMatchLineups.classList.add('pure-table');
+        awayMatchLineups.classList.add('pure-table', 'awayTable');
 
         const awayLineupHeader = document.createElement('h3');
         awayLineupHeader.classList.add('awayLineupHeader');
@@ -626,6 +633,8 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         awayMatchLineups.appendChild(awaythead);
         const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
         const awaytbody = document.createElement('tbody');
+        //Table container:
+        
 
         if (clickedMatch.awayStartLineupPlayer.length !== 0) {
         awayteamLineUp.forEach(item => {
@@ -684,7 +693,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             dataMatchRef.textContent = 'Match Referee: ' + clickedMatch.matchRef;
           
             const exitButton = document.createElement('button');
-            exitButton.classList.add('pure-button', '#cancelMatchData');
+            exitButton.classList.add('pure-button', 'cancelMatchData');
             exitButton.textContent = 'Close';
 
             exitButton.addEventListener('click',() => {
@@ -842,8 +851,6 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
 
     //displays southern central league
     function southernCentral() {
-
-
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Southern Central") {
             const matchDiv = document.createElement('div');
@@ -1065,30 +1072,13 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
        allUpcomingGamesContainer.style.display='block';
    })
    
-
 return upcomingGamesContainer;
 }
+//matches();
 
 // Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
-
-var searchBtn = document.getElementById('innerSubmit');
-
-var teamName = '';
-
-
-
-searchBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var userInput = document.getElementById('formSearch');
-    var teamName = userInput.value + " matches round";
-    getYoutube(teamName);
-
-
-});
-
 
 function getYoutube(teamName) {
 
@@ -1102,7 +1092,6 @@ function getYoutube(teamName) {
     .then(function(data) {
         console.log(data);
 
-        
         var videoContainer = document.getElementById("youtube_container")
         
         // set video 1
@@ -1134,7 +1123,6 @@ function getYoutube(teamName) {
 
         }
     );
-
 }
 
 function init() {
@@ -1156,30 +1144,27 @@ let tableData="";
 tableData += `
 <thead>
   <tr class="league-standings-container">
-    <th class="league-standings-column" scope="col">Position</th>
-    <th class="league-standings-column" scope="col">Team</th>
-    <th class="league-standings-column" scope="col">W</th>
-    <th class="league-standings-column" scope="col">D</th>
-    <th class="league-standings-column" scope="col">L</th>
-    <th class="league-standings-column" scope="col">PTS</th>
+    <th class="league-standings-column" scope="col"><h3 class="positionTitle">Position</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="teamTitle">Team</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="winsTitle">W</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="drawTitle">D</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="lossTitle">L</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="totalTitle">PTS</h3></th>
   </tr>
 </thead>
 `;
 objectData.filter((values) => values.stage_name === stageName)
     .forEach(values => {
 
-
-  tableData+=`<tr>
-  <td>#${values.overall_league_position}</td>
-  <td>${values.team_name}</td>
-  <td>${values.overall_league_W}</td>
-  <td>${values.overall_league_D}</td>
-  <td>${values.overall_league_L}</td>
-  <td>${values.overall_league_PTS}</td>
+  tableData+=`<tr class="teamRow">
+  <td class="teamPosition">#${values.overall_league_position}</td>
+  <td class="teamName">${values.team_name}</td>
+  <td class="teamWins">${values.overall_league_W}</td>
+  <td class="teamDraw">${values.overall_league_D}</td>
+  <td class="teamLoss">${values.overall_league_L}</td>
+  <td class="teamTotal">${values.overall_league_PTS}</td>
 </tr>`
   
-
-
 });
 console.log('--->'+(JSON.stringify(objectData)));
 document.querySelector('.league-table').innerHTML = tableData;
@@ -1206,8 +1191,6 @@ northernTableHeading.style.display = "none";
 
 const isthmianTableHeading = document.querySelector("#isthmian-table-heading");
 isthmianTableHeading.style.display = "none";
-
-
 
 // Event handler for displaySouthSouthTable
 displaySouthSouthTable.addEventListener('click', function() {
@@ -1257,5 +1240,4 @@ displaySouthSouthTable.addEventListener('click', function() {
   displayUpcomingMatches();
 
 })//&from=${today}&to=2023-03-09&league_id=153
-
 

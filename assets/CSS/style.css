@@ -1,6 +1,6 @@
 :root {
     --blue: #001282;
-    --gold: #B69A47;
+    --gold: #b49846;
     --white: #FEFEFE;
     --yellow: #FEDB37;
     --hoverColor: #F28928;
@@ -27,6 +27,7 @@ h1 {
     font-family: var(--headings);
     font-size: 3em;
 }
+
 /* Modal */
 #modal{
     position: fixed;
@@ -132,7 +133,17 @@ input{
     color: var(--white);
     padding: 0.5em;
 }
-
+#faveClearBtn{
+    background-color: var(--gold);
+    border: none;
+    width: 30%;
+    text-align: center;
+    margin: 1em;
+}
+#faveClearBtn:hover{
+    background-color: var(--white);
+    color: var(--blue);
+}
 
 /*Stats Container */
 #pastCont {
@@ -149,6 +160,9 @@ input{
 
 /*Video Container */
 /*change the id's name */
+#youtube_container {
+    margin-block: 1em;
+}
 #videoOne, #videoTwo {
     margin: 2.5em;
     min-height: 150px;
@@ -165,44 +179,56 @@ input{
     border-radius: 25px;
     margin-block: 1em;
     margin-inline: 0.5em;
-    padding: 1em;
-    height: 1000px;
+    height: 600px;
+    overflow-y: auto;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
     /* adjusted to 1000px for now -Jonson */
+    /*Changed it to 600px -Victoria */
 }
-
+#leagueTitleAndButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#leagueBtnCont{
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-block: 0.5em;
+}
+#display-south-south-league, #display-southern-central-league, #display-north-league, #display-isthmian-legue{
+   margin-inline: 1em;
+   margin-block: 0.5em;
+}
+#south-south-table-heading, #southern-central-table-heading, #northern-table-heading, #isthmian-table-heading{
+    font-family: var(--headings);
+    font-size: 2.4em;
+    color: var(--blue);
+    margin-top: 0.5em;
+}
 .league-table {
-    font-family : Arial, Helvetica, sans-serif;
+    font-family : var(--main);
     border-collapse: collapse;
-    width: 25%;  
-    height: 500px;
+    width: 100%;  
 }
-
-th{
-    text-align: left;
-    border: 1px black;
-    padding: 5px;   
-}
-
 td{
-    border: 1px; 
-    padding: 5px;
+    padding: 0.5em;
 }
-
-table, th, td{
-    border: 1px solid black;
+table, th,  td{
+    border: 1px solid var(--gold);
 }
-
+.positionTitle, .teamTitle, .winsTitle, .drawTitle, .lossTitle, .totalTitle{
+    color: var(--blue);
+    font-weight: 600;
+    background-color: hsla(45, 49%, 49%, 0.8);
+    /*Changes the opacity of gold colour*/
+}
 .league-standings-container:nth-child(odd) {
 background-color: #B69A47;
 }
 
 .league-standings-container:nth-child(even) {
     background-color:#001282;
-}
-
-.league-standings-column {
-    background-color: var(--white)
 }
 
 .league-standings-container:nth-child(1) {
@@ -251,7 +277,7 @@ background-color: #B69A47;
     padding: 0.5em;
     margin-inline: 0.5em;
     margin-block: 1em;
-    height: 500px;
+    height: 600px;
     color: var(--white);
     text-align: center;
     overflow-y: auto;
@@ -311,9 +337,8 @@ background-color: #B69A47;
 
  .button-xlarge {
     font-size: 1em;
-
  }
-
+/*Pop up match data modal */
  #modalUpcoming {
     position: fixed;
     background-color: rgba(0,0,0,0.4);
@@ -322,39 +347,71 @@ background-color: #B69A47;
     width: 100%;
     left: 0;
     top: 0;
-    padding-top: 7em;
+    margin: 0 auto;
+    padding-top: 4em;
     overflow: auto;
  }
 
 #modalContUpcoming {
-    width: 80%;
-    margin: auto;
-    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1em;
     background-color: var(--yellow);
     border: 3px solid var(--gold);
     border-radius: 25px;
+    width: 60%;
 }
-
-.modal-match-up-img-2 {
-    margin-left: auto;
-    margin-right: auto;
+.pure-table{
+    width: 80%;
 }
-
-.modal-match-up-img-1 {
-    margin-left: auto;
-    margin-right: auto;
+#modalContUpcoming img{
+    padding-left: 1em;
+    display: flex;
+    float: right;
+    align-items: center;
 }
-
 .modal-match-time {
-    text-align: center;
+    text-align: left;
+    padding-block: 0.2em;
+    font-size: 1.2em;
 }
 
 .modal-match-date {
-    text-align: center;
+    text-align: left;
+    padding-block: 0.2em;
+    font-size: 1.2em;
+}
+.match-data-stadium {
+    text-align: left;
+    padding-block: 0.5em;
+}
+.homeTable, .awayTable{
+  text-align: left;
 }
 
-.match-data-stadium {
-    text-align: center;
+.homeLineupHeader, 
+.awayLineupHeader{
+    font-family: var(--headings);
+    color: var(--blue);
+    padding-block: 0.5em;
+    font-size: 1.8em;
+    
+}
+.cancelMatchData{
+   background-color: var(--blue);
+   border: none;
+   color: var(--white);
+   margin-block: 1em;
+   padding: 0.7em 3em;
+}
+.cancelMatchData:hover{
+    background-color: var(--white);
+    color: var(--blue);
+}
+th{
+   background-color: #001282;
+   color: var(--white);
 }
 
 footer{
@@ -370,10 +427,20 @@ footer h5{
     font-family: var(--main);
 }
 @media screen and (max-width: 500px){
+    h1{
+        font-size: 2.5em;
+    }
     #modalCont{
         height: 300px;
         width: 300px;
         padding: 0.6em;
+    }
+    #youtube_container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2em;
     }
     label{
         font-size: 2em;
@@ -394,5 +461,67 @@ footer h5{
     #submit{
         padding-block: 0.5em;
 
+    } 
+    #modalUpcoming {
+        position: fixed;
+        background-color: rgba(0,0,0,0.4);
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+        padding-top: 7em;
+        overflow: auto;
+     }
+     #modalContUpcoming {
+        margin: 0 auto;
+        padding: 2em;
+        background-color: var(--yellow);
+        border: 3px solid var(--gold);
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    #modalContUpcoming img{
+        display: flex;
+        justify-content: center;
+         align-self: center;
+         padding: 0.5em;
+         margin: 0.5em;
+     }
+}
+@media screen and (max-width: 380px){
+    #formSearch{
+        width: 90%;
+    }
+    #innerSubmit{
+        margin-left: 1em;
+        margin-bottom: 1em;
+        padding-inline: 1.5em;
+    }
+    #youtube_container{
+        margin: 0;
+        padding: 0;
+    }
+    
+    #modalContUpcoming {
+        padding: 1em;
+        width: 80%;
+    }
+    #modalContUpcoming img{
+        height: 25%;
+        width: 25%;
+        
+    }
+    .modal-match-time, .modal-match-date,  .match-data-stadium {
+        font-size: 1em;
+    }
+    .homeLineupHeader, 
+    .awayLineupHeader{
+        font-size: 1.4em;
+    }
+    .homeTable, .awayTable{
+        font-size: 0.8em;
     }
 }

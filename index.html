@@ -18,7 +18,7 @@
 <body>
     <!--Header-->
     <header class="pure-u-1-1">
-        <h1>Football Tracker</h1>
+        <h1>Non-Premiere League Football Tracker</h1>
     </header>
 
     <!--Pop up modal-->
@@ -30,13 +30,13 @@
            <datalist id="teams">
             <option value="Aveley">
             </option>
-            <option value="Radcliffe"></option>
-            <option value="Lancaster City">
+            <option value="Guiseley"></option>
+            <option value="Poole Town">
             </option>
-            <option value="Stratford"></option>
+            <option value="Ashton United"></option>
             <option value="Stourbridge">
             </option>
-            <option value="Salisbury"></option>
+            <option value="Winchester City"></option>
             <option value="Kingstonian"></option>
            </datalist>
            
@@ -60,11 +60,11 @@
             <datalist id="teams">
                 <option value="Aveley">
                 </option>
-                <option value="Lancaster City">
+                <option value="Poole Town">
                 </option>
                 <option value="Stourbridge">
                 </option>
-                <option value="Salisbury"></option>
+                <option value="Winchester City"></option>
                 <option value="Kingstonian"></option>
                 <option value="Whitby"></option>
                 <option value="Bedford"></option>
@@ -74,17 +74,15 @@
             type="submit" class="pure-button"
             >Search</button>
 
-            
-            
-
-
         </form>
         <div id="faveTeams">
             <ul>
                 
             </ul>
-
+      
         </div>
+        
+        <button class='pure-button' id="faveClearBtn">Clear</button> 
     </div>
     </div>
     <!--Stats Container-->
@@ -149,15 +147,18 @@
         <div class="pure-u-1 pure-u-md-2-3">
             
          <div id="leagueCont">
-            <button class="button-large pure-button" id="display-south-south-league">Southern South</button>
-            <button class="button-large pure-button" id="display-south-central-league">Southern Central</button>
-            <button class="button-large pure-button" id="display-north-league">Northern</button>
-            <button class="button-large pure-button" id="display-isthmian-league">Isthmian</button>
+            <div id="leagueTitleAndButtons">
             <h2 id="south-south-table-heading">Southern South</h2>
             <h2 id="southern-central-table-heading">Southern Central</h2>
             <h2 id="northern-table-heading">Northern</h2>
             <h2 id="isthmian-table-heading">Isthmian</h2>
-
+            <div id="leagueBtnCont">
+            <button class="button-large pure-button" id="display-south-south-league">Southern South</button>
+            <button class="button-large pure-button" id="display-south-central-league">Southern Central</button>
+            <button class="button-large pure-button" id="display-north-league">Northern</button>
+            <button class="button-large pure-button" id="display-isthmian-league">Isthmian</button>
+        </div>
+        </div>
             <table class="league-table">
     
               </table>
@@ -200,21 +201,17 @@
             </div>
             </div> 
         </div>
-           
     </div>
-
-    <!--Upcoming Games Container-->
-    <div id="modalUpcoming" class="pure-g"> 
-        <div id="modalContUpcoming" class="pure-u-1">
-            
-        </div>
-
-    
+    <!--footer-->
     <footer class="pure-u-1-1">
         <h4>Created By:</h4>
         <h5>Jonson, Jiasi, Jorge, and Victoria</h5>
-    </footer> 
-    
+    </footer>
+    <!--Upcoming Games Container-->
+    <div id="modalUpcoming" class="pure-g hide"> 
+        <div id="modalContUpcoming" class="pure-u-1">
+
+        </div>
 </div>
 
     <script src="./assets/JavaScript/script.js"></script>
