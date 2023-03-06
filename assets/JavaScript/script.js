@@ -13,8 +13,6 @@ htmlSubmitBtn.addEventListener('click', function(e){
     savedTeam(searchedTeam);
     let teamName = searchedTeam + " highlight round";
     getYoutube(teamName);
-    
-  //  searchedTeam.value = "";
 })
 //Deals with the modal submit btn
 submitBtn.addEventListener('click', function(e){
@@ -27,11 +25,16 @@ submitBtn.addEventListener('click', function(e){
    getYoutube(teamName);
 });
 
-let storedTeams = [];
+let storedTeams = JSON.parse(localStorage.getItem('storedTeams')) || [];
 //Cancel btn
 cancelBtn.addEventListener('click', function(e){
    e.preventDefault();
    modalEl.classList.add('hide');
+})
+faveClearBtn.addEventListener('click', function(){
+    window.localStorage.clear();
+    storedTeams = [];
+    faveTeamCont.innerHTML = '';
 })
     //Store in local storage:
 function savedTeam(searchedTeam){
@@ -53,6 +56,7 @@ function savedTeam(searchedTeam){
         }
     }
     returnTeam();
+
 
 const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d64097792'
 

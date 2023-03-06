@@ -133,7 +133,18 @@ input{
     color: var(--white);
     padding: 0.5em;
 }
-
+#faveClearBtn{
+    color: var(--white);
+    background-color: var(--gold);
+    border: none;
+    width: 30%;
+    text-align: center;
+    margin: 1em;
+}
+#faveClearBtn:hover{
+    background-color: var(--white);
+    color: var(--blue);
+}
 
 /*Stats Container */
 #statsCont {
