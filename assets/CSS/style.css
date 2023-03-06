@@ -163,9 +163,82 @@ input{
     margin-block: 1em;
     margin-inline: 0.5em;
     padding: 1em;
-    height: 500px;
+    height: 1000px;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
+    /* adjusted to 1000px for now -Jonson */
 }
+
+.league-table {
+    font-family : Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 25%;  
+    height: 500px;
+}
+
+th{
+    text-align: left;
+    border: 1px black;
+    padding: 5px;   
+}
+
+td{
+    border: 1px; 
+    padding: 5px;
+}
+
+table, th, td{
+    border: 1px solid black;
+}
+
+.league-standings-container:nth-child(odd) {
+background-color: #B69A47;
+}
+
+.league-standings-container:nth-child(even) {
+    background-color:#001282;
+}
+
+.league-standings-column {
+    background-color: var(--white)
+}
+
+.league-standings-container:nth-child(1) {
+    background-color: green;
+}
+
+.league-standings-container:nth-child(2) {
+    background-color: rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(3) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(4) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(5) {
+    background-color:  rgb(109, 177, 8);
+}
+
+.league-standings-container:nth-child(19) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(20) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(21) {
+    background-color: red;
+}
+
+.league-standings-container:nth-child(22) {
+    background-color: red;
+}
+
+
 /*Upcoming Matches Container */
 #upcomingCont {
     background-color: var(--blue);
@@ -280,9 +353,7 @@ input{
 .match-data-stadium {
     text-align: center;
 }
-footer{
 
- }
 footer{
     font-family: var(--headings);
     background-color: var(--gold);

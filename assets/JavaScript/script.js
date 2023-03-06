@@ -779,10 +779,119 @@ function init() {
    getYoutube(teamName);
 };
 
-init(); 
+init();  
 
-displayUpcomingMatches();
+//Jorge Standngs
+function displayStandingsTable(stageName) {
+const footballAPIkey2 = 'b68068c14aa1be71d20cd0ab16889081f580d11f4a028a039beaf15cf855e34d'
 
+fetch("https://apiv3.apifootball.com/?action=get_standings&league_id=149&APIkey=" + footballAPIkey2).then((data)=>{
+//console.log(data);
+return data.json(); //converted data to json
+}).then((objectData)=>{
+console.log(objectData[0].title);
+let tableData="";
+tableData += `
+<thead>
+  <tr class="league-standings-container">
+    <th class="league-standings-column" scope="col">Position</th>
+    <th class="league-standings-column" scope="col">Team</th>
+    <th class="league-standings-column" scope="col">W</th>
+    <th class="league-standings-column" scope="col">D</th>
+    <th class="league-standings-column" scope="col">L</th>
+    <th class="league-standings-column" scope="col">PTS</th>
+  </tr>
+</thead>
+`;
+objectData.filter((values) => values.stage_name === stageName)
+    .forEach(values => {
+
+
+  tableData+=`<tr>
+  <td>#${values.overall_league_position}</td>
+  <td>${values.team_name}</td>
+  <td>${values.overall_league_W}</td>
+  <td>${values.overall_league_D}</td>
+  <td>${values.overall_league_L}</td>
+  <td>${values.overall_league_PTS}</td>
+</tr>`
+  
+
+
+});
+console.log(tableData);
+document.querySelector('.league-table').innerHTML = tableData;
+
+})
+.catch(error => console.error(error));
+
+}
+const displaySouthSouthTable = document.querySelector('#display-south-south-league');
+const displaySouthCentralTable = document.querySelector('#display-south-central-league');
+const displayNorthTable = document.querySelector('#display-north-league');
+const displayIsthmianTable = document.querySelector('#display-isthmian-league');
+
+const southernSouthTableHeading = document.querySelector("#south-south-table-heading");
+southernSouthTableHeading.style.display = "block";
+
+displayStandingsTable('Southern South');
+
+const southernCentralTableHeading = document.querySelector("#southern-central-table-heading");
+southernCentralTableHeading.style.display = "none";
+
+const northernTableHeading = document.querySelector("#northern-table-heading");
+northernTableHeading.style.display = "none";
+
+const isthmianTableHeading = document.querySelector("#isthmian-table-heading");
+isthmianTableHeading.style.display = "none";
+
+
+
+// Event handler for displaySouthSouthTable
+displaySouthSouthTable.addEventListener('click', function() {
+    console.log('Displaying South South Table');
+    southernSouthTableHeading.style.display = "block";
+    southernCentralTableHeading.style.display = "none";
+    northernTableHeading.style.display = "none";
+    isthmianTableHeading.style.display = "none";
+    // Call function to display South South table
+    displayStandingsTable('Southern South');
+  });
+  
+  // Event handler for displaySouthCentralTable
+  displaySouthCentralTable.addEventListener('click', function() {
+    console.log('Displaying South Central Table');
+    southernSouthTableHeading.style.display = "none";
+    southernCentralTableHeading.style.display = "block";
+    northernTableHeading.style.display = "none";
+    isthmianTableHeading.style.display = "none";
+    // Call function to display South Central table
+    displayStandingsTable('Southern Central');
+  });
+  
+  // Event handler for displayNorthTable
+  displayNorthTable.addEventListener('click', function() {
+    console.log('Displaying North Table');
+    southernSouthTableHeading.style.display = "none";
+    southernCentralTableHeading.style.display = "none";
+    northernTableHeading.style.display = "block";
+    isthmianTableHeading.style.display = "none";
+    // Call function to display North table
+    displayStandingsTable('Northern');
+  });
+  
+  // Event handler for displayIsthmianTable
+  displayIsthmianTable.addEventListener('click', function() {
+    console.log('Displaying Isthmian Table');
+    southernSouthTableHeading.style.display = "none";
+    southernCentralTableHeading.style.display = "none";
+    northernTableHeading.style.display = "none";
+    isthmianTableHeading.style.display = "block";
+    // Call function to display Isthmian table
+    displayStandingsTable('Isthmian');
+  });
+
+  displayUpcomingMatches();
 
 })//&from=${today}&to=2023-03-09&league_id=153
 
