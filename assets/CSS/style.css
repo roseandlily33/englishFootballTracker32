@@ -1,9 +1,12 @@
 :root {
-    --blue: #001282;
+    --blue: hsl(232, 100%, 25%);
     --gold: #b49846;
     --white: #FEFEFE;
     --yellow: #FEDB37;
     --hoverColor: #F28928;
+    --darkGreen: #3f901c;
+    --green:  #7fb736;
+    --red: #c62626;
     --headings: 'Bebas Neue', cursive;
     --main: 'DM Sans', sans-serif;
 }
@@ -144,8 +147,7 @@ input{
     background-color: var(--white);
     color: var(--blue);
 }
-
-/*Stats Container */
+/* Past Games Container */
 #pastCont {
     margin-block: 1em;
     margin-inline: 0.5em;
@@ -157,9 +159,53 @@ input{
     height: 375px;
     overflow-y: scroll;
 }
+.past-header{
+    font-family: var(--headings);
+    text-align: center;
+    color: var(--blue);
+    font-size: 2.3em;
+}
+.button-past-games{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.divison-past{
+    padding-left: 1em;
+    padding-top: 0.8em;
+    font-weight: 700;
+    font-size: 1.6em;
+    text-decoration: underline;
+}
+.past-divison-section{
+    padding: 2em;
+}
+.pastmatch{
+   font-size: 1.2em;
+   margin: 1em;
+   border: 2px solid var(--gold);
+   border-radius: 15px;
+   padding: 1em;
+}
+.past-match-date{
+    font-size: 1.2em;
+}
+.home-match-result{
+    font-size: 1.2em;
+}
+.division-name-past{
+   font-family: var(--headings);
+   font-size: 1.2em;   
+}
+.match-up2{
+    font-size: 1.3em;
+}
+.past-match-up{
+    float: right;
+    height: 80px;
+}
 
 /*Video Container */
-/*change the id's name */
 #youtube_container {
     margin-block: 1em;
 }
@@ -223,50 +269,25 @@ table, th,  td{
     background-color: hsla(45, 49%, 49%, 0.8);
     /*Changes the opacity of gold colour*/
 }
-.league-standings-container:nth-child(odd) {
-background-color: #B69A47;
+.teamRow:nth-child(odd) {
+    color: var(--white);
+background-color: var(--gold);
 }
-
-.league-standings-container:nth-child(even) {
-    background-color:#001282;
+.teamRow:nth-child(even) {
+    color: var(--white);
+    background-color:var(--blue);
 }
-
-.league-standings-container:nth-child(1) {
-    background-color: green;
+.teamRow:nth-child(1) {
+    background-color: var(--darkGreen);
 }
+.teamRow:nth-child(2), .teamRow:nth-child(3), .teamRow:nth-child(4), .teamRow:nth-child(5) {
+    background-color: var(--green);}
 
-.league-standings-container:nth-child(2) {
-    background-color: rgb(109, 177, 8);
+.teamRow:nth-child(19),.teamRow:nth-child(20),  
+.teamRow:nth-child(21),.teamRow:nth-child(22) {
+    background-color: var(--red);
 }
-
-.league-standings-container:nth-child(3) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(4) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(5) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(19) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(20) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(21) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(22) {
-    background-color: red;
-}
-
+ 
 
 /*Upcoming Matches Container */
 #upcomingCont {
@@ -489,6 +510,25 @@ footer h5{
          align-self: center;
          padding: 0.5em;
          margin: 0.5em;
+     }
+     .button-past-games{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-block: 0.5em;
+        justify-content: space-evenly;
+     }
+     .button-past-games .pure-button{
+         margin: 0.3em;
+     }
+     .match-up2{
+        font-size: 1em;
+     }
+     .past-match-date{
+        font-size: 0.8em;
+     }
+     .home-match-result{
+        font-size: 0.8em;
      }
 }
 @media screen and (max-width: 380px){
