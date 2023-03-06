@@ -778,25 +778,25 @@ let tableData="";
 tableData += `
 <thead>
   <tr class="league-standings-container">
-    <th class="league-standings-column" scope="col">Position</th>
-    <th class="league-standings-column" scope="col">Team</th>
-    <th class="league-standings-column" scope="col">W</th>
-    <th class="league-standings-column" scope="col">D</th>
-    <th class="league-standings-column" scope="col">L</th>
-    <th class="league-standings-column" scope="col">PTS</th>
+    <th class="league-standings-column" scope="col"><h3 class="positionTitle">Position</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="teamTitle">Team</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="winsTitle">W</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="drawTitle">D</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="lossTitle">L</h3></th>
+    <th class="league-standings-column" scope="col"><h3 class="totalTitle">PTS</h3></th>
   </tr>
 </thead>
 `;
 objectData.filter((values) => values.stage_name === stageName)
     .forEach(values => {
 
-  tableData+=`<tr>
-  <td>#${values.overall_league_position}</td>
-  <td>${values.team_name}</td>
-  <td>${values.overall_league_W}</td>
-  <td>${values.overall_league_D}</td>
-  <td>${values.overall_league_L}</td>
-  <td>${values.overall_league_PTS}</td>
+  tableData+=`<tr class="teamRow">
+  <td class="teamPosition">#${values.overall_league_position}</td>
+  <td class="teamName">${values.team_name}</td>
+  <td class="teamWins">${values.overall_league_W}</td>
+  <td class="teamDraw">${values.overall_league_D}</td>
+  <td class="teamLoss">${values.overall_league_L}</td>
+  <td class="teamTotal">${values.overall_league_PTS}</td>
 </tr>`
   
 });

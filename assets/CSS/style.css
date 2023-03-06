@@ -1,6 +1,6 @@
 :root {
     --blue: #001282;
-    --gold: #B69A47;
+    --gold: #b49846;
     --white: #FEFEFE;
     --yellow: #FEDB37;
     --hoverColor: #F28928;
@@ -26,12 +26,6 @@ h1 {
     color: var(--blue);
     font-family: var(--headings);
     font-size: 3em;
-}
-
-#youtube_container {
-    margin-top: 30px;
-    margin-left: 30px;
-    
 }
 
 /* Modal */
@@ -153,6 +147,9 @@ input{
 
 /*Video Container */
 /*change the id's name */
+#youtube_container {
+    margin-block: 1em;
+}
 #videoOne, #videoTwo {
     margin: 2.5em;
     min-height: 150px;
@@ -169,8 +166,8 @@ input{
     border-radius: 25px;
     margin-block: 1em;
     margin-inline: 0.5em;
-    padding: 1em;
     height: 600px;
+    overflow-y: auto;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
     /* adjusted to 1000px for now -Jonson */
     /*Changed it to 600px -Victoria */
@@ -184,6 +181,7 @@ input{
 #leagueBtnCont{
     flex-direction: row;
     justify-content: space-evenly;
+    margin-block: 0.5em;
 }
 #display-south-south-league, #display-southern-central-league, #display-north-league, #display-isthmian-legue{
    margin-inline: 1em;
@@ -193,21 +191,25 @@ input{
     font-family: var(--headings);
     font-size: 2.4em;
     color: var(--blue);
+    margin-top: 0.5em;
 }
 .league-table {
     font-family : var(--main);
     border-collapse: collapse;
     width: 100%;  
 }
-
 td{
     padding: 0.5em;
 }
-
 table, th,  td{
-    border: 1px solid black;
+    border: 1px solid var(--gold);
 }
-
+.positionTitle, .teamTitle, .winsTitle, .drawTitle, .lossTitle, .totalTitle{
+    color: var(--blue);
+    font-weight: 600;
+    background-color: hsla(45, 49%, 49%, 0.8);
+    /*Changes the opacity of gold colour*/
+}
 .league-standings-container:nth-child(odd) {
 background-color: #B69A47;
 }
@@ -266,7 +268,7 @@ background-color: #B69A47;
     padding: 0.5em;
     margin-inline: 0.5em;
     margin-block: 1em;
-    height: 500px;
+    height: 600px;
     color: var(--white);
     text-align: center;
     overflow-y: auto;
