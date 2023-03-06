@@ -1,8 +1,8 @@
 # Football Project
-Group 1 Project - Football website to see stats, scores, and videos about English Football Teams.
+Group 1 Project - Football website to see stats, scores, and videos about the Non-Premier League for English Football Teams.
 
 ## Description:
-A english football tracker that shows you your desired favourite team, stores that in a list on localStorage, and dynamically updates the infomation on that screen depending on the team you chose. It uses 2 API's: APIfootball (for the information about the team selected) and the youtube api(to show videos on the team selected).
+A non-premiere league english football tracker that shows you your desired favourite team, stores that in a list on localStorage, and dynamically updates the infomation on that screen depending on the team you chose. It uses 2 API's: APIfootball (for the information about the team selected) and the youtube api(to show videos on the team selected).
 
 ## Screenshots:
 Coming Soon
@@ -11,16 +11,16 @@ Coming Soon
 Coming Soon
 
 ## Usage:
-When the screen loads your presented with a input text box that shows a couple of different teams that you can search for if you don't know which one you want, on submit your taken to the main page, where you can see dynamically added information with a search bar on the side that keeps track of your searches for teams in local storage and displays them on the screen. To search for a new team, simply type in a team on the left hand side search bar and press search. 
+When the screen loads your presented with a input text box that shows a couple of different teams that you can search for if you don't know which one you want, on submit your taken to the main page, where you can see dynamically added information with a search bar on the side that keeps track of your searches for teams in local storage and displays them on the screen. To search for a new team, simply type in a team on the left hand side search bar and press search. You can see videos about the selected team, and stats, and standings. There is a section for upcoming games that you can click on the match game button and see information about that game like the time, date, players, and stadium.
 
 ## Difficulties:
-The difficulties that we faced the most was the actual API's because we needed free ones, there was limited information that we could select from them, including the amount of it. Example found a free video API, and could only display one when we wanted 2. 
+The difficulties that we faced the most was the actual API's because we needed free ones, there was limited information that we could select from them, including the amount of it. Halfway through the project once we had found an API that actually worked, the API switched information on us and we had to go in a different direction. We also free video API, and could only display one when we wanted 2 and the youtube API, had given us some trouble as well. 
 
 ## Problem it solves:
-The problem that it solves as being an avid english football watcher that I would like to see results based on the team that I chose. 
+The problem that it solves as being an avid non-premier league english football watcher that I would like to see results based on the team that I chose, since there is limited sources with all of the information that I would like to see available in once place. 
 
 ## Future Development:
-We would like to put in more sections containing things like news about the selected team.
+We would like to put in more sections containing things like news, tweets, show top scorers about the selected team.
 
 ## Style Process:
 Wireframe:
