@@ -6,7 +6,8 @@ A non-premier league english football tracker that shows you your desired favour
 
 ## Screenshots:
 <img width="1279" alt="Screenshot 2023-03-06 at 4 14 58 PM" src="https://user-images.githubusercontent.com/109821108/223223606-4cc72831-2e67-4136-b915-f2210109654d.png">
-<img width="1274" alt="Screenshot 2023-03-06 at 4 14 51 PM" src="https://user-images.githubusercontent.com/109821108/223223578-dba47e34-a3f7-4361-b1d5-4fe04fc8a785.png">
+<img width="1264" alt="Screenshot 2023-03-06 at 5 05 39 PM" src="https://user-images.githubusercontent.com/109821108/223230861-39977dc3-fa16-4954-bb1d-cc61a5386aaa.png">
+
 
 
 ## Live URL:
