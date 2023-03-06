@@ -218,10 +218,6 @@ background-color: #B69A47;
     background-color:#001282;
 }
 
-.league-standings-column {
-    background-color: var(--white)
-}
-
 .league-standings-container:nth-child(1) {
     background-color: green;
 }
