@@ -362,6 +362,8 @@ function displayPastMatches (data) {
     pastIsthmianLeagueContainer.style.display='none';
     allPastGamesContainer.style.display='block';
 
+    displayAllPast();
+
 
     displayPastSouthSouthBtn.addEventListener('click', function(){
         
@@ -1069,7 +1071,7 @@ return upcomingGamesContainer;
 
 // Video part
 
- /* var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
+ var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
 var searchBtn = document.getElementById('innerSubmit');
 
@@ -1140,7 +1142,7 @@ function init() {
    getYoutube(teamName);
 };
 
-init();   */
+init(); 
 
 //Jorge Standngs
 function displayStandingsTable(stageName) {
