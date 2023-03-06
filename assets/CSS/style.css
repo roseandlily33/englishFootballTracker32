@@ -76,7 +76,7 @@ input{
     justify-content: space-around;
     padding: 1em;
 }
-#cancel, #submit{
+#cancel, #submit, #cancelMatchData {
     border: none;
     border-radius: 25px;
     padding: 1em 2em;
@@ -235,6 +235,53 @@ input{
 
  .button-xlarge {
     font-size: 1em;
+
+ }
+
+ #modalUpcoming {
+    position: fixed;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 7em;
+    overflow: auto;
+ }
+
+#modalContUpcoming {
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    background-color: var(--yellow);
+    border: 3px solid var(--gold);
+    border-radius: 25px;
+}
+
+.modal-match-up-img-2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-match-up-img-1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-match-time {
+    text-align: center;
+}
+
+.modal-match-date {
+    text-align: center;
+}
+
+.match-data-stadium {
+    text-align: center;
+}
+footer{
+
  }
 footer{
     font-family: var(--headings);

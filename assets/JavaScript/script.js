@@ -74,7 +74,7 @@ yyyy = tomorrow.getFullYear();
 tomorrow = yyyy + '-' + mm + '-' + dd
 
 function upcomingMatches(team) {
-    fetch( `https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
+    fetch( `https://apiv3.apifootball.com/?action=get_events&from=2023-02-20&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
 
@@ -82,6 +82,7 @@ function upcomingMatches(team) {
     .then(function(data) {
          const matchData = data.map(item => {
             return {
+            matchID: item.match_id,
             matchDate: item.match_date,
             time: item.match_time,
             hometeamID: item.match_hometeam_id,
@@ -94,7 +95,11 @@ function upcomingMatches(team) {
             matchRef: item.match_referee,
             leagueName: item.league_name,
             homeLineUp: item.lineup.home,
-            awayLineUp: item.lineup.away
+            awayLineUp: item.lineup.away,
+            homeStartLineupPlayer: item.lineup.home.starting_lineups,
+            awayStartLineupPlayer: item.lineup.away.starting_lineups
+
+
         };
     });
         console.log('--->'+(JSON.stringify(matchData)));
@@ -116,9 +121,241 @@ function displayUpcomingMatches(data) {
     const southernLeagueContainer = document.querySelector('#southern-south-upcoming');
     const southernCentralLeagueContainer = document.querySelector('#southern-central-upcoming');
     const northernLeagueContainer = document.querySelector('#northern-upcoming');
-    const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming')
+    const isthmianLeagueContainer = document.querySelector('#isthmian-upcoming');
+    const matchDataModal = document.querySelector ('#modalUpcoming');
+    const matchDataModalCont = document.querySelector ('#modalContUpcoming')
+    matchDataModal.style.display = 'none';
+
+    function upcomingDataModal(matchID) {
+
+        matchDataModalCont.innerHTML = '';
+
+            const clickedMatch = data.find(match => match.matchID === matchID);
+
+            const matchDiv = document.createElement('div');
+            matchDiv.classList.add('modal-match');
+          
+            const matchDate = document.createElement('h2');
+            matchDate.classList.add('modal-match-date');
+            matchDate.textContent = 'Date: ' + clickedMatch.matchDate;
+          
+            const matchTime = document.createElement('h2');
+            matchTime.classList.add('modal-match-time');
+            matchTime.textContent = 'Time: ' + clickedMatch.time;
+
+            const homeTeamBadge = document.createElement('img');
+            homeTeamBadge.classList.add('modal-match-up-img-1');
+            homeTeamBadge.src = clickedMatch.homeBadge;
+    
+            const awayTeamBadge = document.createElement('img');
+            awayTeamBadge.classList.add('modal-match-up-img-2');
+            awayTeamBadge.src = clickedMatch.awayBadge;
+          
+            const divisionName = document.createElement('h2');
+            divisionName.classList.add('modal-division-name-upcoming');
+          
+            const matchUp = document.createElement('h1');
+            matchUp.classList.add('modal-match-up');
+            matchUp.textContent = clickedMatch.hometeamName + ' VS. ' + clickedMatch.awayteamName;
+
+            const matchDataStadium = document.createElement('h3');
+            matchDataStadium.classList.add('match-data-stadium');
+            matchDataStadium.textContent = 'Stadium: ' + clickedMatch.stadium;
+
+        //  home player line ups table
+           
+        const homeMatchLineups = document.createElement('table'); 
+        homeMatchLineups.classList.add('pure-table');
+
+        const homeLineupHeader = document.createElement('h3');
+        homeLineupHeader.classList.add('homeLineupHeader');
+        homeLineupHeader.textContent = 'Home Starting Line up';
+
+        const homethead = document.createElement('thead');
+        const hometr = document.createElement('tr');
+        const homethPlayer = document.createElement('th');
+        homethPlayer.textContent = 'Player';
+        const homethNumber = document.createElement('th');
+        homethNumber.textContent = 'Number';
+        const homethPosition = document.createElement('th');
+        homethPosition.textContent = 'Position';
+
+        hometr.appendChild(homethPlayer);
+        hometr.appendChild(homethNumber);
+        hometr.appendChild(homethPosition);
+        homethead.appendChild(hometr);
+        homeMatchLineups.appendChild(homethead);
+        const teamhomeLineUp = clickedMatch.homeStartLineupPlayer;
+        const hometbody = document.createElement('tbody');
+
+        console.log(teamhomeLineUp);
+if (clickedMatch.homeStartLineupPlayer.length !== 0){
+        teamhomeLineUp.forEach(item => {
+        const hometr = document.createElement('tr');
+        const hometdPlayer = document.createElement('td');
+        hometdPlayer.textContent = item.lineup_player
+        const hometdNumber = document.createElement('td');
+        hometdNumber.textContent = item.lineup_number
+        const hometdPosition = document.createElement('td');
+        if (item.lineup_position === '1') {
+        hometdPosition.textContent = 'GoalKeeper'
+        } else if (item.lineup_position === '2') {
+        hometdPosition.textContent = 'Right Center Back'
+        } else if (item.lineup_position === '3') {
+            hometdPosition.textContent = 'Left Wing Back'
+        } else if (item.lineup_position === '4') {
+            hometdPosition.textContent = 'Left Center Back'
+        } else if (item.lineup_position === '5') {
+            hometdPosition.textContent = 'Center Back'
+        } else if (item.lineup_position === '6') {
+            hometdPosition.textContent = 'Defensive MidField'
+        } else if (item.lineup_position === '7') {
+            hometdPosition.textContent = 'Right Wing Back'
+        } else if (item.lineup_position === '8') {
+            hometdPosition.textContent = 'Central Midfield'
+        } else if (item.lineup_position === '9') {
+            hometdPosition.textContent = 'Striker'
+        } else if (item.lineup_position === '10') {
+            hometdPosition.textContent = 'Attacking Midfield'
+        } else if (item.lineup_position === '11') {
+            hometdPosition.textContent = 'Central Forward'
+        } else {
+            hometdPosition.textContent = 'N/A' 
+        }
+        hometr.appendChild(hometdPlayer);
+        hometr.appendChild(hometdNumber);
+        hometr.appendChild(hometdPosition);
+        hometbody.appendChild(hometr);
+        });
+    } else if (clickedMatch.homeStartLineupPlayer.length === 0) {
+            const NAhometr = document.createElement('tr');
+            const NAhometdPlayer = document.createElement('td');
+            NAhometdPlayer.textContent = 'N/A'
+            const NAhometdNumber = document.createElement('td');
+            NAhometdNumber.textContent = 'N/A'
+            const NAhometdPosition = document.createElement('td');
+            NAhometdPosition.textContent = 'N/A'
+            NAhometr.appendChild(NAhometdPlayer);
+            NAhometr.appendChild(NAhometdNumber);
+            NAhometr.appendChild(NAhometdPosition);
+            hometbody.appendChild(NAhometr);
+    }
+ 
+        //away players lineup
+        
+        const awayMatchLineups = document.createElement('table'); 
+        awayMatchLineups.classList.add('pure-table');
+
+        const awayLineupHeader = document.createElement('h3');
+        awayLineupHeader.classList.add('awayLineupHeader');
+        awayLineupHeader.textContent = 'Away Starting Line up';
+
+        const awaythead = document.createElement('thead');
+        const awaytr = document.createElement('tr');
+        const awaythPlayer = document.createElement('th');
+        awaythPlayer.textContent = 'Player';
+        const awaythNumber = document.createElement('th');
+        awaythNumber.textContent = 'Number';
+        const awaythPosition = document.createElement('th');
+        awaythPosition.textContent = 'Position';
+
+        awaytr.appendChild(awaythPlayer);
+        awaytr.appendChild(awaythNumber);
+        awaytr.appendChild(awaythPosition);
+        awaythead.appendChild(awaytr);
+        awayMatchLineups.appendChild(awaythead);
+        const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
+        const awaytbody = document.createElement('tbody');
+
+        if (clickedMatch.awayStartLineupPlayer.length !== 0) {
+        awayteamLineUp.forEach(item => {
+        const awaytr = document.createElement('tr');
+        const awaytdPlayer = document.createElement('td');
+        awaytdPlayer.textContent = item.lineup_player
+        const awaytdNumber = document.createElement('td');
+        awaytdNumber.textContent = item.lineup_number
+        const awaytdPosition = document.createElement('td');
+        if (item.lineup_position === '1') {
+        awaytdPosition.textContent = 'GoalKeeper'
+        } else if (item.lineup_position === '2') {
+        awaytdPosition.textContent = 'Right Center Back'
+        } else if (item.lineup_position === '3') {
+            awaytdPosition.textContent = 'Left Wing Back'
+        } else if (item.lineup_position === '4') {
+            awaytdPosition.textContent = 'Left Center Back'
+        } else if (item.lineup_position === '5') {
+            awaytdPosition.textContent = 'Center Back'
+        } else if (item.lineup_position === '6') {
+            awaytdPosition.textContent = 'Defensive MidField'
+        } else if (item.lineup_position === '7') {
+            awaytdPosition.textContent = 'Right Wing Back'
+        } else if (item.lineup_position === '8') {
+            awaytdPosition.textContent = 'Central Midfield'
+        } else if (item.lineup_position === '9') {
+            awaytdPosition.textContent = 'Striker'
+        } else if (item.lineup_position === '10') {
+            awaytdPosition.textContent = 'Attacking Midfield'
+        } else if (item.lineup_position === '11') {
+            awaytdPosition.textContent = 'Central Forward'
+        } else {
+            awaytdPosition.textContent = 'N/A' 
+        }
+        awaytr.appendChild(awaytdPlayer);
+        awaytr.appendChild(awaytdNumber);
+        awaytr.appendChild(awaytdPosition);
+        awaytbody.appendChild(awaytr);
+        });
+    } else if (clickedMatch.awayStartLineupPlayer.length === 0) {
+            const NAawaytr = document.createElement('tr');
+            const NAawaytdPlayer = document.createElement('td');
+            NAawaytdPlayer.textContent = 'N/A'
+            const NAawaytdNumber = document.createElement('td');
+            NAawaytdNumber.textContent = 'N/A'
+            const NAawaytdPosition = document.createElement('td');
+            NAawaytdPosition.textContent = 'N/A'
+            NAawaytr.appendChild(NAawaytdPlayer);
+            NAawaytr.appendChild(NAawaytdNumber);
+            NAawaytr.appendChild(NAawaytdPosition);
+            awaytbody.appendChild(NAawaytr);
+    }
+
+            const dataMatchRef = document.createElement('h3');
+            dataMatchRef.classList.add('match-data-stadium');
+            dataMatchRef.textContent = 'Match Referee: ' + clickedMatch.matchRef;
+          
+            const exitButton = document.createElement('button');
+            exitButton.classList.add('pure-button', '#cancelMatchData');
+            exitButton.textContent = 'Close';
+
+            exitButton.addEventListener('click',() => {
+                matchDataModal.style.display = 'none'
+            })
+
+            console.log(clickedMatch.homeStartLineupPlayer);
+            
+            matchDiv.appendChild(matchUp);
+            matchDiv.appendChild(homeTeamBadge);
+            matchDiv.appendChild(awayTeamBadge);
+            matchDiv.appendChild(matchTime);
+            matchDiv.appendChild(matchDate);
+            matchDiv.appendChild(matchDataStadium);
+            matchDiv.appendChild(divisionName);
+            matchDiv.appendChild(dataMatchRef);
+            matchDiv.appendChild(homeMatchLineups);
+            homeMatchLineups.appendChild(hometbody);
+            awayMatchLineups.appendChild(awaytbody);
+            matchDiv.appendChild(homeLineupHeader);
+            matchDiv.appendChild(homeMatchLineups);
+            matchDiv.appendChild(awayLineupHeader);
+            matchDiv.appendChild(awayMatchLineups);
+            matchDiv.appendChild(exitButton);
+            matchDataModalCont.appendChild(matchDiv);
+        
+    }
 
     // displays upcoming games for the next 5 days
+    //display the data of the given match
+
     function displayAll () {
         for (let i = 0; i < data.length; i++) {
 
@@ -164,9 +401,17 @@ function displayUpcomingMatches(data) {
             
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             //Match Data will appear in a modal when clicked
+            //Take match ID and send it to the modal
+            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
@@ -213,7 +458,13 @@ function displayUpcomingMatches(data) {
         matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
         moreButton.textContent = 'Match Data';
         moreButton.addEventListener('click', () => {
-            console.log(data[i].stadium)
+            const clickedMatchID = data[i].matchID;
+            const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+            
+            console.log(clickedMatch.matchID);
+          
+            matchDataModal.style.display = 'block';
+            upcomingDataModal(clickedMatchID);
           });
         console.log(data[i].matchDate);
 
@@ -262,7 +513,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
 
@@ -309,8 +566,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium);
-                console.log(data[i].matchRef);
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             northernLeagueContainer.appendChild(matchDiv);
@@ -359,7 +621,13 @@ function displayUpcomingMatches(data) {
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             moreButton.textContent = 'Match Data';
             moreButton.addEventListener('click', () => {
-                console.log(data[i].stadium)
+                const clickedMatchID = data[i].matchID;
+                const clickedMatch = data.find(match => match.matchID === clickedMatchID);
+                
+                console.log(clickedMatch.matchID);
+              
+                matchDataModal.style.display = 'block';
+                upcomingDataModal(clickedMatchID);
               });
             console.log(data[i].matchDate);
             isthmianLeagueContainer.appendChild(matchDiv)
@@ -438,12 +706,9 @@ function displayUpcomingMatches(data) {
 return upcomingGamesContainer;
 }
 
-
-//matches();
-
 // Video part
 
-var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
+ var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
 
 var searchBtn = document.getElementById('innerSubmit');
 
@@ -451,7 +716,7 @@ var teamName = '';
 
 
 
-//searchBtn.addEventListener('click', function(event) {
+searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var userInput = document.getElementById('formSearch');
@@ -459,7 +724,7 @@ var teamName = '';
     getYoutube(teamName);
 
 
-//});
+});
 
 
 function getYoutube(teamName) {
@@ -514,9 +779,10 @@ function init() {
    getYoutube(teamName);
 };
 
-init();
+init(); 
 
 displayUpcomingMatches();
+
 
 })//&from=${today}&to=2023-03-09&league_id=153
 
