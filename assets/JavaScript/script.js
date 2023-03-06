@@ -6,6 +6,9 @@ let mainContent = document.getElementById('mainContent')
 let cancelBtn = document.getElementById('cancel');
 let faveTeamCont = document.getElementById('faveTeams');
 
+var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
+var teamName = '';
+
 let storedTeams = [];
 //Cancel btn
 cancelBtn.addEventListener('click', function(e){
@@ -17,7 +20,9 @@ htmlSubmitBtn.addEventListener('click', function(e){
     e.preventDefault();
     let searchedTeam = document.getElementById('formSearch').value;
     savedTeam(searchedTeam);
-    getYoutube(searchedTeam);
+    let teamName = searchedTeam + " highlight round";
+    getYoutube(teamName);
+    
   //  searchedTeam.value = "";
 })
 //Deals with the modal submit btn
@@ -27,7 +32,8 @@ submitBtn.addEventListener('click', function(e){
    //get the value
    let searchedTeam = document.getElementById('modalSearch').value;
    savedTeam(searchedTeam);
-   getYoutube(searchedTeam);
+   let teamName = searchedTeam + " highlight round";
+   getYoutube(teamName);
 });
 //Store in local storage:
 function savedTeam(searchedTeam){
@@ -48,6 +54,60 @@ function returnTeam(){
         faveTeamCont.append(newli);
     }
 }
+
+//Call videos back
+function getYoutube(teamName) {
+
+    // q=England%20Championship
+    console.log(teamName);
+
+    var youtubeContainer = document.getElementById('youtube_container');
+
+    var videoPartOne = document.getElementById('videoOne');
+    var video1Tl = document.getElementById('video1Tl');   
+    var youtubeVideo1 = document.getElementById('youtubeVideo1');
+
+    var videoPartTwo = document.getElementById('videoTwo');
+    var video2Tl = document.getElementById('video2Tl');
+    var youtubeVideo2 = document.getElementById('youtubeVideo2');
+    
+    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&order=date&q=${teamName}&topicId=sport&type=video&key=${API_key}`)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+     
+        if (data.items.length !== 2) {
+            videoPartOne.innerHTML = "";
+            videoPartTwo.innerHTML = "";
+            youtubeContainer.textContent = "Sorry, we cannot find related videos."
+            
+        } else {
+            // set video 1
+            var video1Title = data.items[0].snippet.title;
+            var videoSrc1 = "https://www.youtube.com/embed/" + data.items[0].id.videoId;
+    
+            console.log(video1Title);
+            console.log(videoSrc1);
+    
+            video1Tl.textContent = video1Title;
+            youtubeVideo1.setAttribute('src', videoSrc1);
+             
+            // set video 2
+            var video2Title = data.items[1].snippet.title;
+            var  videoSrc2 = "https://www.youtube.com/embed/" + data.items[1].id.videoId;
+    
+            console.log(video2Title);
+            console.log(videoSrc2);
+    
+            video2Tl.textContent = video2Title;
+            youtubeVideo2.setAttribute('src', videoSrc2);
+        }
+        
+    })
+    
+};
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -706,6 +766,11 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
 return upcomingGamesContainer;
 }
 
+
+
+//matches();
+
+
 // Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
@@ -773,6 +838,7 @@ function getYoutube(teamName) {
     );
 
 }
+
 
 function init() {
    var teamName = 'England%20Championship';
