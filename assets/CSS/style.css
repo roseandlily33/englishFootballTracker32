@@ -326,21 +326,25 @@ background-color: #B69A47;
     left: 0;
     top: 0;
     margin: 0 auto;
-    padding-top: 7em;
+    padding-top: 6em;
     overflow: auto;
  }
 
 #modalContUpcoming {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    padding: 2em;
+    padding: 1em;
     background-color: var(--yellow);
     border: 3px solid var(--gold);
     border-radius: 25px;
-    display: flex;
-    flex-direction: column;
+    width: 60%;
+}
+.pure-table{
+    width: 80%;
 }
 #modalContUpcoming img{
-   padding-left: 1em;
+    padding-left: 1em;
     display: flex;
     float: right;
     align-items: center;
@@ -348,11 +352,13 @@ background-color: #B69A47;
 .modal-match-time {
     text-align: left;
     padding-block: 0.2em;
+    font-size: 1.2em;
 }
 
 .modal-match-date {
     text-align: left;
     padding-block: 0.2em;
+    font-size: 1.2em;
 }
 .match-data-stadium {
     text-align: left;
@@ -366,8 +372,9 @@ background-color: #B69A47;
 .awayLineupHeader{
     font-family: var(--headings);
     color: var(--blue);
-    padding: 0.5em;
-    font-size: 1.6em;
+    padding-block: 0.5em;
+    font-size: 1.8em;
+    
 }
 .cancelMatchData{
    background-color: var(--blue);
@@ -384,7 +391,6 @@ th{
    background-color: #001282;
    color: var(--white);
 }
-
 
 footer{
     font-family: var(--headings);
