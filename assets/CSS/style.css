@@ -163,8 +163,9 @@ input{
     margin-block: 1em;
     margin-inline: 0.5em;
     padding: 1em;
-    height: 500px;
+    height: 1000px;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
+    /* adjusted to 1000px for now -Jonson */
 }
 
 .league-table {
@@ -198,7 +199,7 @@ background-color: #B69A47;
 }
 
 .league-standings-column {
-    background-color: #001282;
+    background-color: var(--white)
 }
 
 .league-standings-container:nth-child(1) {
