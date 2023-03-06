@@ -1,9 +1,12 @@
 :root {
-    --blue: #001282;
+    --blue: hsl(232, 100%, 25%);
     --gold: #b49846;
     --white: #FEFEFE;
     --yellow: #FEDB37;
     --hoverColor: #F28928;
+    --darkGreen: #3f901c;
+    --green:  #7fb736;
+    --red: #c62626;
     --headings: 'Bebas Neue', cursive;
     --main: 'DM Sans', sans-serif;
 }
@@ -266,50 +269,25 @@ table, th,  td{
     background-color: hsla(45, 49%, 49%, 0.8);
     /*Changes the opacity of gold colour*/
 }
-.league-standings-container:nth-child(odd) {
-background-color: #B69A47;
+.teamRow:nth-child(odd) {
+    color: var(--white);
+background-color: var(--gold);
 }
-
-.league-standings-container:nth-child(even) {
-    background-color:#001282;
+.teamRow:nth-child(even) {
+    color: var(--white);
+    background-color:var(--blue);
 }
-
-.league-standings-container:nth-child(1) {
-    background-color: green;
+.teamRow:nth-child(1) {
+    background-color: var(--darkGreen);
 }
+.teamRow:nth-child(2), .teamRow:nth-child(3), .teamRow:nth-child(4), .teamRow:nth-child(5) {
+    background-color: var(--green);}
 
-.league-standings-container:nth-child(2) {
-    background-color: rgb(109, 177, 8);
+.teamRow:nth-child(19),.teamRow:nth-child(20),  
+.teamRow:nth-child(21),.teamRow:nth-child(22) {
+    background-color: var(--red);
 }
-
-.league-standings-container:nth-child(3) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(4) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(5) {
-    background-color:  rgb(109, 177, 8);
-}
-
-.league-standings-container:nth-child(19) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(20) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(21) {
-    background-color: red;
-}
-
-.league-standings-container:nth-child(22) {
-    background-color: red;
-}
-
+ 
 
 /*Upcoming Matches Container */
 #upcomingCont {

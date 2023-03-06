@@ -175,8 +175,6 @@ function displayPastMatches (data) {
         }
     }
     function displaySouthSouthPast () {
-
-
         for (let i = 0; i < data.length; i++) {
             
             if (data[i].leagueName === "Non League Premier - Southern South") {
@@ -207,7 +205,6 @@ function displayPastMatches (data) {
             awayTeamBadge.classList.add('past-match-up');
             awayTeamBadge.src = data[i].awayBadge;
     
-            
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
             
             console.log(data[i].matchDate);
@@ -218,13 +215,9 @@ function displayPastMatches (data) {
             matchDiv.appendChild(homeMatchScore);
             matchDiv.appendChild(matchDate);
             pastSouthernLeagueContainer.appendChild(matchDiv);
-            }
-        
-    }
+            }}
     }
     function displaySouthCentralPast () {
-
-
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Southern Central") {
 
@@ -253,7 +246,6 @@ function displayPastMatches (data) {
             awayTeamBadge.classList.add('past-match-up');
             awayTeamBadge.src = data[i].awayBadge;
     
-            
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
            
             console.log(data[i].matchDate);
@@ -268,8 +260,6 @@ function displayPastMatches (data) {
     }
     }
     function displayNorthPast () {
-       
-
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Northern") {
             const matchDiv = document.createElement('div');
@@ -297,7 +287,6 @@ function displayPastMatches (data) {
             awayTeamBadge.classList.add('past-match-up');
             awayTeamBadge.src = data[i].awayBadge;
     
-            
             matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
            
             console.log(data[i].matchDate);
@@ -313,8 +302,6 @@ function displayPastMatches (data) {
     }
     }
     function displayIshtmianPast () {
-        
-
         for (let i = 0; i < data.length; i++) {
             if (data[i].leagueName === "Non League Premier - Isthmian") {
             const matchDiv = document.createElement('div');
@@ -370,9 +357,7 @@ function displayPastMatches (data) {
 
     displayAllPast();
 
-
     displayPastSouthSouthBtn.addEventListener('click', function(){
-        
         pastSouthernLeagueContainer.style.display='block';
         pastSouthernCentralLeagueContainer.style.display='none';
         pastNorthernLeagueContainer.style.display='none';
@@ -382,7 +367,6 @@ function displayPastMatches (data) {
        })
     
     displayPastSouthCentralBtn.addEventListener('click', function(){
-        
         pastSouthernLeagueContainer.style.display='none';
         pastSouthernCentralLeagueContainer.style.display='block';
         pastNorthernLeagueContainer.style.display='none';
@@ -392,7 +376,6 @@ function displayPastMatches (data) {
     })
     
     displayPastNorthBtn.addEventListener('click', function(){
-        
         pastSouthernLeagueContainer.style.display='none';
         pastSouthernCentralLeagueContainer.style.display='none';
         pastNorthernLeagueContainer.style.display='block';
@@ -402,7 +385,6 @@ function displayPastMatches (data) {
     })
 
     displayPastIsthmianBtn.addEventListener('click', function(){
-         
         pastSouthernLeagueContainer.style.display='none';
         pastSouthernCentralLeagueContainer.style.display='none';
         pastNorthernLeagueContainer.style.display='none';
@@ -412,7 +394,6 @@ function displayPastMatches (data) {
     })
 
     displayPastAllButtonbtn.addEventListener('click', function(){
-        
         pastSouthernLeagueContainer.style.display='none';
         pastSouthernCentralLeagueContainer.style.display='none';
         pastNorthernLeagueContainer.style.display='none';
@@ -426,7 +407,6 @@ function displayPastMatches (data) {
 //Formats the API call to only call the current day and to a specified date
 //Set tommorrow to 5 days so that there is always games displaying
 //A future update could allow the user to choose the specified number fo games they went to see and when
-
 let tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate()+5);
 
@@ -464,18 +444,14 @@ function upcomingMatches(team) {
             homeStartLineupPlayer: item.lineup.home.starting_lineups,
             awayStartLineupPlayer: item.lineup.away.starting_lineups,
             stagekey: item.fk_stage_key
-
-
         };
     });
         console.log('--->'+(JSON.stringify(matchData)));
         displayUpcomingMatches(matchData);
     })
-    
     .catch(function()  {
     }) 
 }
-
 //match_date, match_time, match_hometeam_id/match_awayteam_id, match_hometeam_name/match_awayteam_name, match_stadium, team_home/away_badge, match_referee, league_year
 //possibilities - lineup
 upcomingMatches();
@@ -493,7 +469,6 @@ function displayUpcomingMatches(data) {
     matchDataModal.style.display = 'none';
 
     function upcomingDataModal(matchID) {
-
         matchDataModalCont.innerHTML = '';
 
             const clickedMatch = data.find(match => match.matchID === matchID);
@@ -606,9 +581,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             NAhometr.appendChild(NAhometdPosition);
             hometbody.appendChild(NAhometr);
     }
- 
-        //away players lineup
-        
+        //away players lineup   
         const awayMatchLineups = document.createElement('table'); 
         awayMatchLineups.classList.add('pure-table', 'awayTable');
 
@@ -633,8 +606,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
         const awaytbody = document.createElement('tbody');
         //Table container:
-        
-
+    
         if (clickedMatch.awayStartLineupPlayer.length !== 0) {
         awayteamLineUp.forEach(item => {
         const awaytr = document.createElement('tr');
@@ -720,10 +692,8 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             matchDataModalCont.appendChild(matchDiv);
         
     }
-
     // displays upcoming games for the next 5 days
     //display the data of the given match
-
     function displayAll () {
         for (let i = 0; i < data.length; i++) {
 
@@ -900,7 +870,6 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             }
         }
     }
-    
     //displays northern league
     function northern() {
         
@@ -1074,7 +1043,6 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
 return upcomingGamesContainer;
 }
 //matches();
-
 // Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
