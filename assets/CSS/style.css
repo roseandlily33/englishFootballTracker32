@@ -170,30 +170,41 @@ input{
     margin-block: 1em;
     margin-inline: 0.5em;
     padding: 1em;
-    height: 1000px;
+    height: 600px;
     /*Height is 500 for now, may adjust it again when Jorge's part is in */
     /* adjusted to 1000px for now -Jonson */
+    /*Changed it to 600px -Victoria */
 }
-
+#leagueTitleAndButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#leagueBtnCont{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#display-south-south-league, #display-southern-central-league, #display-north-league, #display-isthmian-legue{
+   margin-inline: 1em;
+   margin-block: 0.5em;
+}
+#south-south-table-heading, #southern-central-table-heading, #northern-table-heading, #isthmian-table-heading{
+    font-family: var(--headings);
+    font-size: 2.4em;
+    color: var(--blue);
+}
 .league-table {
-    font-family : Arial, Helvetica, sans-serif;
+    font-family : var(--main);
     border-collapse: collapse;
-    width: 25%;  
-    height: 500px;
-}
-
-th{
-    text-align: left;
-    border: 1px black;
-    padding: 5px;   
+    width: 100%;  
 }
 
 td{
-    border: 1px; 
-    padding: 5px;
+    padding: 0.5em;
 }
 
-table, th, td{
+table, th,  td{
     border: 1px solid black;
 }
 

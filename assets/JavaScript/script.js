@@ -705,35 +705,13 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
        allUpcomingGamesContainer.style.display='block';
    })
    
-
 return upcomingGamesContainer;
 }
-
-
-
 //matches();
-
 
 // Video part
 
  var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
-
-//var searchBtn = document.getElementById('innerSubmit');
-
-//var teamName = '';
-
-
-
-searchBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var userInput = document.getElementById('formSearch');
-   var teamName = userInput.value + " matches round";
-   getYoutube(teamName);
-
-
-});
-
 
 function getYoutube(teamName) {
 
@@ -747,7 +725,6 @@ function getYoutube(teamName) {
     .then(function(data) {
         console.log(data);
 
-        
         var videoContainer = document.getElementById("youtube_container")
         
         // set video 1
@@ -779,9 +756,7 @@ function getYoutube(teamName) {
 
         }
     );
-
 }
-
 
 function init() {
    var teamName = 'England%20Championship';
@@ -815,7 +790,6 @@ tableData += `
 objectData.filter((values) => values.stage_name === stageName)
     .forEach(values => {
 
-
   tableData+=`<tr>
   <td>#${values.overall_league_position}</td>
   <td>${values.team_name}</td>
@@ -825,8 +799,6 @@ objectData.filter((values) => values.stage_name === stageName)
   <td>${values.overall_league_PTS}</td>
 </tr>`
   
-
-
 });
 console.log(tableData);
 document.querySelector('.league-table').innerHTML = tableData;
@@ -853,8 +825,6 @@ northernTableHeading.style.display = "none";
 
 const isthmianTableHeading = document.querySelector("#isthmian-table-heading");
 isthmianTableHeading.style.display = "none";
-
-
 
 // Event handler for displaySouthSouthTable
 displaySouthSouthTable.addEventListener('click', function() {
