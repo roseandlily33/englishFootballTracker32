@@ -1,13 +1,11 @@
 //Wrapped everything in the on doc load:
 document.addEventListener('DOMContentLoaded', function() {
-
  //Pop up modal:
 let htmlSubmitBtn = document.getElementById('innerSubmit');
 let submitBtn = document.getElementById('submit');
 let modalEl = document.getElementById('modal');
 let cancelBtn = document.getElementById('cancel');
 let faveTeamCont = document.getElementById('faveTeams');
-
 //Deals with the on html submit btn
 htmlSubmitBtn.addEventListener('click', function(e){
     e.preventDefault();
@@ -147,7 +145,7 @@ function displayUpcomingMatches(data) {
             const matchTime = document.createElement('h2');
             matchTime.classList.add('modal-match-time');
             matchTime.textContent = 'Time: ' + clickedMatch.time;
-
+           
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('modal-match-up-img-1');
             homeTeamBadge.src = clickedMatch.homeBadge;
@@ -170,7 +168,7 @@ function displayUpcomingMatches(data) {
         //  home player line ups table
            
         const homeMatchLineups = document.createElement('table'); 
-        homeMatchLineups.classList.add('pure-table');
+        homeMatchLineups.classList.add('pure-table', 'homeTable');
 
         const homeLineupHeader = document.createElement('h3');
         homeLineupHeader.classList.add('homeLineupHeader');
@@ -249,7 +247,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         //away players lineup
         
         const awayMatchLineups = document.createElement('table'); 
-        awayMatchLineups.classList.add('pure-table');
+        awayMatchLineups.classList.add('pure-table', 'awayTable');
 
         const awayLineupHeader = document.createElement('h3');
         awayLineupHeader.classList.add('awayLineupHeader');
@@ -271,6 +269,8 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
         awayMatchLineups.appendChild(awaythead);
         const awayteamLineUp = clickedMatch.awayStartLineupPlayer;
         const awaytbody = document.createElement('tbody');
+        //Table container:
+        
 
         if (clickedMatch.awayStartLineupPlayer.length !== 0) {
         awayteamLineUp.forEach(item => {
@@ -329,7 +329,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
             dataMatchRef.textContent = 'Match Referee: ' + clickedMatch.matchRef;
           
             const exitButton = document.createElement('button');
-            exitButton.classList.add('pure-button', '#cancelMatchData');
+            exitButton.classList.add('pure-button', 'cancelMatchData');
             exitButton.textContent = 'Close';
 
             exitButton.addEventListener('click',() => {

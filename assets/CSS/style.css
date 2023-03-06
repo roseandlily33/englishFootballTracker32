@@ -315,9 +315,8 @@ background-color: #B69A47;
 
  .button-xlarge {
     font-size: 1em;
-
  }
-
+/*Pop up match data modal */
  #modalUpcoming {
     position: fixed;
     background-color: rgba(0,0,0,0.4);
@@ -326,40 +325,66 @@ background-color: #B69A47;
     width: 100%;
     left: 0;
     top: 0;
+    margin: 0 auto;
     padding-top: 7em;
     overflow: auto;
  }
 
 #modalContUpcoming {
-    width: 80%;
-    margin: auto;
+    margin: 0 auto;
     padding: 2em;
     background-color: var(--yellow);
     border: 3px solid var(--gold);
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
 }
-
-.modal-match-up-img-2 {
-    margin-left: auto;
-    margin-right: auto;
+#modalContUpcoming img{
+   padding-left: 1em;
+    display: flex;
+    float: right;
+    align-items: center;
 }
-
-.modal-match-up-img-1 {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .modal-match-time {
-    text-align: center;
+    text-align: left;
+    padding-block: 0.2em;
 }
 
 .modal-match-date {
-    text-align: center;
+    text-align: left;
+    padding-block: 0.2em;
+}
+.match-data-stadium {
+    text-align: left;
+    padding-block: 0.5em;
+}
+.homeTable, .awayTable{
+  text-align: left;
 }
 
-.match-data-stadium {
-    text-align: center;
+.homeLineupHeader, 
+.awayLineupHeader{
+    font-family: var(--headings);
+    color: var(--blue);
+    padding: 0.5em;
+    font-size: 1.6em;
 }
+.cancelMatchData{
+   background-color: var(--blue);
+   border: none;
+   color: var(--white);
+   margin-block: 1em;
+   padding: 0.7em 3em;
+}
+.cancelMatchData:hover{
+    background-color: var(--white);
+    color: var(--blue);
+}
+th{
+   background-color: #001282;
+   color: var(--white);
+}
+
 
 footer{
     font-family: var(--headings);
@@ -399,4 +424,32 @@ footer h5{
         padding-block: 0.5em;
 
     }
+    #modalUpcoming {
+        position: fixed;
+        background-color: rgba(0,0,0,0.4);
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+        padding-top: 7em;
+        overflow: auto;
+     }
+     #modalContUpcoming {
+        margin: 0 auto;
+        padding: 2em;
+        background-color: var(--yellow);
+        border: 3px solid var(--gold);
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    #modalContUpcoming img{
+        display: flex;
+        justify-content: center;
+         align-self: center;
+         padding: 0.5em;
+         margin: 0.5em;
+     }
 }
