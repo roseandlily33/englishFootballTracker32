@@ -144,8 +144,7 @@ input{
     background-color: var(--white);
     color: var(--blue);
 }
-
-/*Stats Container */
+/* Past Games Container */
 #pastCont {
     margin-block: 1em;
     margin-inline: 0.5em;
@@ -157,9 +156,53 @@ input{
     height: 375px;
     overflow-y: scroll;
 }
+.past-header{
+    font-family: var(--headings);
+    text-align: center;
+    color: var(--blue);
+    font-size: 2.3em;
+}
+.button-past-games{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.divison-past{
+    padding-left: 1em;
+    padding-top: 0.8em;
+    font-weight: 700;
+    font-size: 1.6em;
+    text-decoration: underline;
+}
+.past-divison-section{
+    padding: 2em;
+}
+.pastmatch{
+   font-size: 1.2em;
+   margin: 1em;
+   border: 2px solid var(--gold);
+   border-radius: 15px;
+   padding: 1em;
+}
+.past-match-date{
+    font-size: 1.2em;
+}
+.home-match-result{
+    font-size: 1.2em;
+}
+.division-name-past{
+   font-family: var(--headings);
+   font-size: 1.2em;   
+}
+.match-up2{
+    font-size: 1.3em;
+}
+.past-match-up{
+    float: right;
+    height: 80px;
+}
 
 /*Video Container */
-/*change the id's name */
 #youtube_container {
     margin-block: 1em;
 }

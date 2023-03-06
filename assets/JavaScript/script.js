@@ -88,7 +88,6 @@ function pastMatches (stageName) {
     fetch(`https://apiv3.apifootball.com/?action=get_events&from=${yesterdayminus5}&to=${yesterday}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
         return resp.json()
-
 })
     .then(function(data) {
         const pastMatchData = data.map(item => {
@@ -137,14 +136,14 @@ function displayPastMatches (data) {
             divisionName.classList.add('division-name-past');
     
             const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            matchUp.classList.add('match-up2');
     
             const homeTeamBadge = document.createElement('img');
-            homeTeamBadge.classList.add('past-match-up');
+            homeTeamBadge.classList.add('past-match-up', 'homeBadgePast');
             homeTeamBadge.src = data[i].homeBadge;
     
             const awayTeamBadge = document.createElement('img');
-            awayTeamBadge.classList.add('past-match-up');
+            awayTeamBadge.classList.add('past-match-up', 'awayBadgePast');
             awayTeamBadge.src = data[i].awayBadge;
     
             
@@ -198,7 +197,7 @@ function displayPastMatches (data) {
             divisionName.classList.add('division-name-past');
     
             const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            matchUp.classList.add('match-up2');
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
@@ -244,7 +243,7 @@ function displayPastMatches (data) {
             divisionName.classList.add('division-name-past');
     
             const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            matchUp.classList.add('match-up2');
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
@@ -288,7 +287,7 @@ function displayPastMatches (data) {
             divisionName.classList.add('division-name-past');
     
             const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            matchUp.classList.add('match-up2');
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
@@ -333,7 +332,7 @@ function displayPastMatches (data) {
             divisionName.classList.add('division-name-past');
     
             const matchUp = document.createElement('h2');
-            matchUp.classList.add('match-up');
+            matchUp.classList.add('match-up2');
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
