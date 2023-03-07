@@ -47,6 +47,10 @@ The colour story based on the english football league:
 - PureCSS
   - https://purecss.io/
 
+## Credits
+- APIfootball : https://apifootball.com/
+- Youtube API : https://developers.google.com/youtube/v3
+
 ## Authors:
 Jonson Allen, Jiasi Li, Jorge Reyes, & Victoria Benoit
 
