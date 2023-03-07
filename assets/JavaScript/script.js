@@ -59,48 +59,49 @@ function savedTeam(searchedTeam){
     returnTeam();
 
 const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d64097792'
+
+const footballAPIkey3 = 'f9f43b9dd8ed789c3ca8fc383e79f946b4adc02a41b7445667d5e9bd1b2f50e8'
 let today = new Date();
+let tomorrow = new Date();
 let yesterdayminus5 = new Date();
 let yesterday = new Date();
 yesterday.setDate(yesterday.getDate()-1);
-yesterdayminus5.setDate(yesterdayminus5.getDate()-5);
-var dd = String(today.getDate()).padStart(2, '0');
+yesterdayminus5.setDate(yesterdayminus5.getDate()-2);
+var dd = String(today.getDate()+2).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 
 
 
-dd = String(yesterday.getDate()).padStart(2, '0');
-mm = String(yesterday.getMonth() + 1).padStart(2, '0');
+
 yyyy = yesterday.getFullYear();
 
 
 yesterday = yyyy + '-' + mm + '-' + dd
 
-dd = String(yesterdayminus5.getDate()).padStart(2, '0');
-mm = String(yesterdayminus5.getMonth() + 1).padStart(2, '0');
 yyyy = yesterdayminus5.getFullYear();
 
 yesterdayminus5 = yyyy + '-' + mm + '-' + dd
 
-function pastMatches (stageName) {
-    fetch(`https://apiv3.apifootball.com/?action=get_events&from=${yesterdayminus5}&to=${yesterday}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
+ function pastMatches (stageName) {
+    fetch(`https://apiv3.apifootball.com/?action=get_events&from=2023-03-03&to=2023-03-09&country_id=44&league_id=149&APIkey=` + footballAPIkey3)
     .then(function(resp) {
         return resp.json()
 })
     .then(function(data) {
-        const pastMatchData = data.map(item => {
+        console.log(data)
+        const pastMatchData = data.map(pastitem => {
             return {
-            matchID: item.match_id,
-            Date: item.match_date,
-            hometeamName: item.match_hometeam_name,
-            awayteamName: item.match_awayteam_name,
-            homeBadge: item.team_home_badge,
-            awayBadge: item.team_away_badge,
-            leagueName: item.league_name,
-            homeScore: item.match_hometeam_ft_score,
-            awayScore: item.match_awayteam_ft_score
+            pastmatchID: pastitem.match_id,
+            pastDate: pastitem.match_date,
+            pasthometeamName: pastitem.match_hometeam_name,
+            pastawayteamName: pastitem.match_awayteam_name,
+            pasthomeBadge: pastitem.team_home_badge,
+            pastawayBadge: pastitem.team_away_badge,
+            pastleagueName: pastitem.league_name,
+            pasthomeScore: pastitem.match_hometeam_ft_score,
+            pastawayScore: pastitem.match_awayteam_ft_score
 
         };
     });
@@ -126,11 +127,11 @@ function displayPastMatches (data) {
     
             const matchDate = document.createElement('h2');
             matchDate.classList.add('past-match-date');
-            matchDate.textContent = data[i].Date;
+            matchDate.textContent = data[i].pastDate;
 
             const homeMatchScore = document.createElement('h2');
             homeMatchScore.classList.add('home-match-result');
-            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+            homeMatchScore.textContent = data[i].pasthomeScore + ' - ' + data[i].pastawayScore
 
             const divisionName = document.createElement('h2');
             divisionName.classList.add('division-name-past');
@@ -140,31 +141,31 @@ function displayPastMatches (data) {
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up', 'homeBadgePast');
-            homeTeamBadge.src = data[i].homeBadge;
+            homeTeamBadge.src = data[i].pasthomeBadge;
     
             const awayTeamBadge = document.createElement('img');
             awayTeamBadge.classList.add('past-match-up', 'awayBadgePast');
-            awayTeamBadge.src = data[i].awayBadge;
+            awayTeamBadge.src = data[i].pastawayBadge;
     
             
             
-            matchDate.textContent = data[i].matchDate;
+            matchDate.textContent = data[i].pastmatchDate;
             //Removes the non premier league portion of the league name
-                if (data[i].leagueName === "Non League Premier - Northern") {
+                if (data[i].pastleagueName === "Non League Premier - Northern") {
                     divisionName.textContent = 'Northern'
-                } else if (data[i].leagueName === "Non League Premier - Southern South") {
+                } else if (data[i].pastleagueName === "Non League Premier - Southern South") {
                     divisionName.textContent = 'Southern South'
-                } else if (data[i].leagueName === "Non League Premier - Southern Central") {
+                } else if (data[i].pastleagueName === "Non League Premier - Southern Central") {
                     divisionName.textContent = 'Southern Central'
-                } else if (data[i].leagueName === "Non League Premier - Isthmian") {
+                } else if (data[i].pastleagueName === "Non League Premier - Isthmian") {
                     divisionName.textContent = 'Isthmian'
                 }
             
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
             //Match Data will appear in a modal when clicked
             //Take match ID and send it to the modal
             //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
-            console.log(data[i].matchDate);
+            
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
@@ -177,18 +178,18 @@ function displayPastMatches (data) {
     function displaySouthSouthPast () {
         for (let i = 0; i < data.length; i++) {
             
-            if (data[i].leagueName === "Non League Premier - Southern South") {
+            if (data[i].pastleagueName === "Non League Premier - Southern South") {
 
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('pastmatch');
     
             const matchDate = document.createElement('h2');
             matchDate.classList.add('past-match-date');
-            matchDate.textContent = data[i].Date;
+            matchDate.textContent = data[i].pastDate;
 
             const homeMatchScore = document.createElement('h2');
             homeMatchScore.classList.add('home-match-result');
-            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+            homeMatchScore.textContent = data[i].pasthomeScore + ' - ' + data[i].pastawayScore
 
 
             const divisionName = document.createElement('h2');
@@ -199,15 +200,14 @@ function displayPastMatches (data) {
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
-            homeTeamBadge.src = data[i].homeBadge;
+            homeTeamBadge.src = data[i].pasthomeBadge;
     
             const awayTeamBadge = document.createElement('img');
             awayTeamBadge.classList.add('past-match-up');
-            awayTeamBadge.src = data[i].awayBadge;
+            awayTeamBadge.src = data[i].pastawayBadge;
     
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
             
-            console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
@@ -219,18 +219,18 @@ function displayPastMatches (data) {
     }
     function displaySouthCentralPast () {
         for (let i = 0; i < data.length; i++) {
-            if (data[i].leagueName === "Non League Premier - Southern Central") {
+            if (data[i].pastleagueName === "Non League Premier - Southern Central") {
 
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('pastmatch');
     
             const matchDate = document.createElement('h2');
             matchDate.classList.add('past-match-date');
-            matchDate.textContent = data[i].Date;
+            matchDate.textContent = data[i].pastDate;
 
             const homeMatchScore = document.createElement('h2');
             homeMatchScore.classList.add('home-match-result');
-            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+            homeMatchScore.textContent = data[i].pasthomeScore + ' - ' + data[i].pastawayScore
 
             const divisionName = document.createElement('h2');
             divisionName.classList.add('division-name-past');
@@ -240,15 +240,15 @@ function displayPastMatches (data) {
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
-            homeTeamBadge.src = data[i].homeBadge;
+            homeTeamBadge.src = data[i].pasthomeBadge;
     
             const awayTeamBadge = document.createElement('img');
             awayTeamBadge.classList.add('past-match-up');
-            awayTeamBadge.src = data[i].awayBadge;
+            awayTeamBadge.src = data[i].pastawayBadge;
     
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
            
-            console.log(data[i].matchDate);
+            console.log(data[i].pastmatchDate);
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
@@ -261,17 +261,17 @@ function displayPastMatches (data) {
     }
     function displayNorthPast () {
         for (let i = 0; i < data.length; i++) {
-            if (data[i].leagueName === "Non League Premier - Northern") {
+            if (data[i].pastleagueName === "Non League Premier - Northern") {
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('pastmatch');
     
             const matchDate = document.createElement('h2');
             matchDate.classList.add('past-match-date');
-            matchDate.textContent = data[i].Date;
+            matchDate.textContent = data[i].pastDate;
 
             const homeMatchScore = document.createElement('h2');
             homeMatchScore.classList.add('home-match-result');
-            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+            homeMatchScore.textContent = data[i].pasthomeScore + ' - ' + data[i].pastawayScore
 
             const divisionName = document.createElement('h2');
             divisionName.classList.add('division-name-past');
@@ -281,13 +281,13 @@ function displayPastMatches (data) {
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
-            homeTeamBadge.src = data[i].homeBadge;
+            homeTeamBadge.src = data[i].pasthomeBadge;
     
             const awayTeamBadge = document.createElement('img');
             awayTeamBadge.classList.add('past-match-up');
-            awayTeamBadge.src = data[i].awayBadge;
+            awayTeamBadge.src = data[i].pastawayBadge;
     
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            matchUp.textContent = pastdata[i].pasthometeamName + ' VS. ' + pastdata[i].pastawayteamName;
            
             console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
@@ -303,7 +303,7 @@ function displayPastMatches (data) {
     }
     function displayIshtmianPast () {
         for (let i = 0; i < data.length; i++) {
-            if (data[i].leagueName === "Non League Premier - Isthmian") {
+            if (data[i].pastleagueName === "Non League Premier - Isthmian") {
             const matchDiv = document.createElement('div');
             matchDiv.classList.add('pastmatch');
     
@@ -313,7 +313,7 @@ function displayPastMatches (data) {
 
             const homeMatchScore = document.createElement('h2');
             homeMatchScore.classList.add('home-match-result');
-            homeMatchScore.textContent = data[i].homeScore + ' - ' + data[i].awayScore
+            homeMatchScore.textContent = data[i].pasthomeScore + ' - ' + data[i].pastawayScore
 
             const divisionName = document.createElement('h2');
             divisionName.classList.add('division-name-past');
@@ -323,16 +323,15 @@ function displayPastMatches (data) {
     
             const homeTeamBadge = document.createElement('img');
             homeTeamBadge.classList.add('past-match-up');
-            homeTeamBadge.src = data[i].homeBadge;
+            homeTeamBadge.src = data[i].pasthomeBadge;
     
             const awayTeamBadge = document.createElement('img');
             awayTeamBadge.classList.add('past-match-up');
-            awayTeamBadge.src = data[i].awayBadge;
+            awayTeamBadge.src = data[i].pastawayBadge;
     
             
-            matchUp.textContent = data[i].hometeamName + ' VS. ' + data[i].awayteamName;
+            matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
            
-            console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
@@ -402,12 +401,11 @@ function displayPastMatches (data) {
         displayAllPast();
    })
    return pastGamesContainer;
-}
+} 
 
 //Formats the API call to only call the current day and to a specified date
 //Set tommorrow to 5 days so that there is always games displaying
 //A future update could allow the user to choose the specified number fo games they went to see and when
-let tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate()+5);
 
 today = yyyy + '-' + mm + '-' + dd
