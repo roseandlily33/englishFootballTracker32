@@ -287,9 +287,8 @@ function displayPastMatches (data) {
             awayTeamBadge.classList.add('past-match-up');
             awayTeamBadge.src = data[i].pastawayBadge;
     
-            matchUp.textContent = pastdata[i].pasthometeamName + ' VS. ' + pastdata[i].pastawayteamName;
+            matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
            
-            console.log(data[i].matchDate);
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
