@@ -63,26 +63,14 @@ const footballAPIkey = 'caf956943f00c7484c8ee343fb5a56b22a6b7195aa7db3bc3ec6bb4d
 const footballAPIkey3 = 'f9f43b9dd8ed789c3ca8fc383e79f946b4adc02a41b7445667d5e9bd1b2f50e8'
 let today = new Date();
 let tomorrow = new Date();
-let yesterdayminus5 = new Date();
+//yesterday variables are only usable with paid tier of API, was meant for the pastMatches fetch
+/* let yesterdayminus5 = new Date();
 let yesterday = new Date();
 yesterday.setDate(yesterday.getDate()-1);
-yesterdayminus5.setDate(yesterdayminus5.getDate()-2);
+yesterdayminus5.setDate(yesterdayminus5.getDate()-2); */
 var dd = String(today.getDate()+2).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-
-
-
-
-
-yyyy = yesterday.getFullYear();
-
-
-yesterday = yyyy + '-' + mm + '-' + dd
-
-yyyy = yesterdayminus5.getFullYear();
-
-yesterdayminus5 = yyyy + '-' + mm + '-' + dd
 
  function pastMatches (stageName) {
     fetch(`https://apiv3.apifootball.com/?action=get_events&from=2023-03-03&to=2023-03-09&country_id=44&league_id=149&APIkey=` + footballAPIkey3)
@@ -111,6 +99,7 @@ yesterdayminus5 = yyyy + '-' + mm + '-' + dd
 }
 pastMatches();
 
+// Function that displays the past matches data pulled from the pastMatches fecth
 function displayPastMatches (data) {
     const pastGamesContainer = document.querySelector('#pastCont');
     const allPastGamesContainer = document.querySelector('#display-all-past-division');
@@ -119,6 +108,7 @@ function displayPastMatches (data) {
     const pastNorthernLeagueContainer = document.querySelector('#northern-past');
     const pastIsthmianLeagueContainer = document.querySelector('#isthmian-past');
 
+    //displays all past matches from every league from the given time line
     function displayAllPast () {
         for (let i = 0; i < data.length; i++) {
 
@@ -162,10 +152,6 @@ function displayPastMatches (data) {
                 }
             
             matchUp.textContent = data[i].pasthometeamName + ' VS. ' + data[i].pastawayteamName;
-            //Match Data will appear in a modal when clicked
-            //Take match ID and send it to the modal
-            //data.find searches for the match ID that corresponds with the current iteration and applies that to the upcmomingData Modal
-            
             matchDiv.appendChild(divisionName);
             matchDiv.appendChild(homeTeamBadge);
             matchDiv.appendChild(awayTeamBadge);
@@ -175,6 +161,9 @@ function displayPastMatches (data) {
             allPastGamesContainer.appendChild(matchDiv);
         }
     }
+    
+//functions below show the past matches for the specific league
+
     function displaySouthSouthPast () {
         for (let i = 0; i < data.length; i++) {
             
@@ -217,6 +206,7 @@ function displayPastMatches (data) {
             pastSouthernLeagueContainer.appendChild(matchDiv);
             }}
     }
+
     function displaySouthCentralPast () {
         for (let i = 0; i < data.length; i++) {
             if (data[i].pastleagueName === "Non League Premier - Southern Central") {
@@ -259,6 +249,7 @@ function displayPastMatches (data) {
             }
     }
     }
+
     function displayNorthPast () {
         for (let i = 0; i < data.length; i++) {
             if (data[i].pastleagueName === "Non League Premier - Northern") {
@@ -300,6 +291,7 @@ function displayPastMatches (data) {
         
     }
     }
+
     function displayIshtmianPast () {
         for (let i = 0; i < data.length; i++) {
             if (data[i].pastleagueName === "Non League Premier - Isthmian") {
@@ -341,6 +333,9 @@ function displayPastMatches (data) {
             }
     }
     }
+
+    // This section Displays the section corresponding to the users button click
+    //Display All is the default
     const displayPastSouthSouthBtn = document.querySelector('#display-past-south-south');
     const displayPastSouthCentralBtn = document.querySelector('#display-past-south-central');
     const displayPastNorthBtn = document.querySelector('#display-past-north');
@@ -404,7 +399,7 @@ function displayPastMatches (data) {
 
 //Formats the API call to only call the current day and to a specified date
 //Set tommorrow to 5 days so that there is always games displaying
-//A future update could allow the user to choose the specified number fo games they went to see and when
+
 tomorrow.setDate(tomorrow.getDate()+5);
 
 today = yyyy + '-' + mm + '-' + dd
@@ -415,6 +410,7 @@ yyyy = tomorrow.getFullYear();
 
 tomorrow = yyyy + '-' + mm + '-' + dd
 
+//this api fetch fetches the data from upcoming games
 function upcomingMatches(team) {
     fetch( `https://apiv3.apifootball.com/?action=get_events&from=${today}&to=${tomorrow}&country_id=44&league_id=149&APIkey=` + footballAPIkey)
     .then(function(resp) {
@@ -449,11 +445,9 @@ function upcomingMatches(team) {
     .catch(function()  {
     }) 
 }
-//match_date, match_time, match_hometeam_id/match_awayteam_id, match_hometeam_name/match_awayteam_name, match_stadium, team_home/away_badge, match_referee, league_year
-//possibilities - lineup
 upcomingMatches();
 
-//Displays Upcoming games
+//Displays Upcoming games function
 function displayUpcomingMatches(data) {
     const upcomingGamesContainer = document.querySelector('#upcomingCont');
     const allUpcomingGamesContainer = document.querySelector('#display-all-division');
@@ -465,6 +459,7 @@ function displayUpcomingMatches(data) {
     const matchDataModalCont = document.querySelector ('#modalContUpcoming')
     matchDataModal.style.display = 'none';
 
+    //This modal shows the match data of a upcoming game such as line up data and the stadium
     function upcomingDataModal(matchID) {
         matchDataModalCont.innerHTML = '';
 
@@ -1039,7 +1034,7 @@ if (clickedMatch.homeStartLineupPlayer.length !== 0){
    
 return upcomingGamesContainer;
 }
-//matches();
+
 // Video part
 
  var API_key = 'AIzaSyBC4cr3gdI2bXZmNufq6UTyeadrAIdRb4Y';
@@ -1203,5 +1198,5 @@ displaySouthSouthTable.addEventListener('click', function() {
   displayPastMatches();
   displayUpcomingMatches();
 
-})//&from=${today}&to=2023-03-09&league_id=153
+})
 
