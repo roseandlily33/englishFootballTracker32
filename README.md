@@ -17,7 +17,7 @@ https://roseandlily33.github.io/englishFootballTracker32/
 When the screen loads your presented with a input text box that shows a couple of different teams that you can search for if you don't know which one you want, on submit your taken to the main page, where you can see dynamically added information with a search bar on the side that keeps track of your searches for teams in local storage and displays them on the screen. To search for a new team, simply type in a team on the left hand side search bar and press search. 
 
 ## Difficulties:
-The difficulties that we faced the most was the actual API's because we needed free ones, there was limited information that we could select from them, including the amount of it, then halfway through the project the API changed the information that it was giving us. For example found a free video API, and could only display one when we wanted 2. We were also trying to display the information for the top players in that team, but the API we were using didn't let us do that so we had to change it to pased games. 
+The difficulties that we faced the most was the actual API's because we needed free ones, there was limited information that we could select from them, including the amount of it, then halfway through the project the API changed the information that it was giving us. For example found a free video API, and could only display one when we wanted too. We were also trying to display the information for the top players in that team, but the API we were using didn't let us do that so we had to change it to past games. We also encountar an API limit where we could not call "yesterday" variable to call only a set date from the current date. We set a fixed date to by pass that issue. The API also did not have the LineUp data or the Referee for most matches.
 
 ## Problem it solves:
 The problem that it solves as being an avid non-premiere league english football watcher that I would like to see results based on the team that I chose. There isn't a whole lot of information about and now with our website you can see everything all in one spot.
@@ -46,6 +46,10 @@ The colour story based on the english football league:
 - HTML5
 - PureCSS
   - https://purecss.io/
+
+## Credits
+- APIfootball : https://apifootball.com/
+- Youtube API : https://developers.google.com/youtube/v3
 
 ## Authors:
 Jonson Allen, Jiasi Li, Jorge Reyes, & Victoria Benoit

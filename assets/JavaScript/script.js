@@ -1037,7 +1037,7 @@ return upcomingGamesContainer;
 
 // Video part
 
- var API_key = 'AIzaSyB5AIbZ5SalzjOQv_gvCFoBPp_yCqj-oNU%20';
+ var API_key = 'AIzaSyBC4cr3gdI2bXZmNufq6UTyeadrAIdRb4Y';
 
 function getYoutube(teamName) {
 
